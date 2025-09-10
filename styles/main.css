@@ -5,7 +5,7 @@ body {
 
 /* Sidebar sadece md ve üstü ekranlarda görünsün */
 .sidebar {
-    width: 50px;
+    width: 40px;
     transition: width 0.3s;
     height: 100vh;
     position: fixed;
@@ -31,7 +31,7 @@ body {
 
 .sidebar .nav-link i {
     font-size: 1.2rem;
-    margin-right: 0;
+    margin-right: 10px;
     transition: margin-right 0.3s;
 }
 
