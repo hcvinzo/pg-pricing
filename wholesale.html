@@ -18,7 +18,7 @@
         <button class="btn btn-light mb-3 mx-2" id="toggleBtn">
             <i class="bi bi-list"></i>
         </button>
-        <a href="#" class="nav-link"><i class="bi bi-house"></i> Home</a>
+        <a href="/" class="nav-link"><i class="bi bi-house"></i> Home</a>
         <a href="/wholesale.html" class="nav-link"><i class="bi bi-box"></i> Wholesale</a>
         <a href="/stampless.html" class="nav-link"><i class="bi bi-file"></i> Stampless</a>
         <a href="/wholesaleplus.html" class="nav-link"><i class="bi bi-box-seam"></i> Wholesale+</a>
@@ -79,9 +79,9 @@
                                     </select>
                                     <div class="d-flex flex-row gap-5">
                                         <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                class="frame-unit-price"></span>€</small>
+                                                id="frame-unit-price"></span>€</small>
                                         <small><span class="fw-semibold">Μέτρο : </span><span
-                                                class="frame-unit"></span>€</small>
+                                                id="frame-unit"></span>m</small>
                                     </div>
                                     <div class="invalid-feedback">
                                         Please select
@@ -97,9 +97,9 @@
                                     </select>
                                     <div class="d-flex flex-row gap-5">
                                         <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                class="second-frame-unit-price"></span>€</small>
+                                                id="second-frame-unit-price"></span>€</small>
                                         <small><span class="fw-semibold">Μέτρο : </span><span
-                                                class="second-frame-unit"></span>€</small>
+                                                id="second-frame-unit"></span>m</small>
                                     </div>
                                     <div class="invalid-feedback">
                                         Please select
@@ -343,9 +343,11 @@
         const form = document.getElementsByClassName('needs-validation')[0];
 
         // Get a reference to the input element and the span element
-        const frameInput = document.getElementById('frame-input');
-        const secondFrameInput = document.getElementById('second-frame-input');
-        const netPriceLabel = document.getElementById('net-price-label');
+        const frameSelect = document.getElementById('frame-select');
+        const frameUnitPrice = document.getElementById('frame-unit-price');
+
+        //const secondFrameInput = document.getElementById('second-frame-input');
+        //const netPriceLabel = document.getElementById('net-price-label');
 
         // Function to calculate the square of a number and update the span
         function calculateAndDisplaySquare() {
@@ -383,14 +385,24 @@
         //frameInput.addEventListener('input', calculateAndDisplaySquare);
 
         form.addEventListener('input', (event) => {
-            calculateAndDisplaySquare();
+            //calculateAndDisplaySquare();
+        });
+
+        frameSelect.addEventListener('input', (event) => {
+            findValueInCsv(
+                'data-files/frame-prices.csv',
+                0, event.target.value
+                , 1, ';').then((data) => {
+                    frameUnitPrice.textContent = data;
+                    //document.querySelector('.frame-unit').textContent = data['ΜΕΤΡΟ'];
+                });
         });
 
         document.addEventListener('DOMContentLoaded', () => {
             populateSelectFromCsv(
-                'data-files/frames.csv',
-                document.getElementById('frameSelect'),
-                document.getElementById('statusMessage')
+                'data-files/frame-prices.csv',
+                document.getElementById('frame-select'),
+                "OXI", 0, 0, ';'
             );
         });
     </script>

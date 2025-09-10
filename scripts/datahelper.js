@@ -1,6 +1,5 @@
-async function populateSelectFromCsv(csvFileUrl, selectControl, statusMessage) {
+async function populateSelectFromCsv(csvFileUrl, selectControl, defaultOptionText = "OXI", valueFieldIndex = 0, textFieldIndex = 1, splitChar = ',') {
     try {
-        statusMessage.textContent = 'Veriler yükleniyor...';
 
         // 1. Fetch ile dosyayı çek
         fetch(csvFileUrl).then(res => {
@@ -15,7 +14,7 @@ async function populateSelectFromCsv(csvFileUrl, selectControl, statusMessage) {
             // Select menüsüne varsayılan bir seçenek ekle
             const defaultOption = document.createElement('option');
             defaultOption.value = "";
-            defaultOption.textContent = "Bir ülke seçin";
+            defaultOption.textContent = defaultOptionText;
             defaultOption.disabled = true;
             defaultOption.selected = true;
             selectControl.appendChild(defaultOption);
@@ -23,12 +22,12 @@ async function populateSelectFromCsv(csvFileUrl, selectControl, statusMessage) {
             // 4. Her bir satırı işle ve select'e ekle
             rows.forEach(row => {
                 // Her satırı virgülle ayır
-                const columns = row.split(',');
+                const columns = row.split(splitChar);
 
                 // Eğer satır boş değilse devam et
                 if (columns.length >= 2) {
-                    const code = columns[0].trim();
-                    const name = columns[1].trim();
+                    const code = columns[valueFieldIndex].trim();
+                    const name = columns[textFieldIndex].trim();
 
                     // Yeni bir <option> elementi oluştur
                     const option = document.createElement('option');
@@ -40,14 +39,63 @@ async function populateSelectFromCsv(csvFileUrl, selectControl, statusMessage) {
                 }
             });
 
-            statusMessage.textContent = 'Veriler başarıyla yüklendi.';
         }).catch(err => {
             throw new Error('Dosya yüklenirken bir hata oluştu: ' + err.message);
-            statusMessage.textContent = 'Veriler yüklenirken bir hata oluştu. Lütfen konsolu kontrol edin.';
         });
 
     } catch (error) {
         console.error('Veri yüklenirken bir hata oluştu:', error);
-        statusMessage.textContent = 'Veriler yüklenirken bir hata oluştu. Lütfen konsolu kontrol edin.';
+    }
+}
+
+/**
+    * searces a CSV file for a value in a specific column and returns a value from another column in the same row.    
+    * * @param {string} csvUrl - url of the CSV file.
+    * @param {number} searchIndex - column index to search in.
+    * @param {string} searchValue - search value to look for.
+    * @param {number} returnIndex - return value from this column index.
+    * @param {string} splitChar - split character, default is comma (,).
+    * @returns {Promise<string|null>} -  found value or null if not found or error.
+    */
+async function findValueInCsv(csvUrl, searchIndex, searchValue, returnIndex, splitChar) {
+    try {
+        // 1. fetch csv file
+        const response = await fetch(csvUrl);
+
+        // check if fetch was successful
+        if (!response.ok) {
+            throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
+
+        // 2. read text from response
+        const csvText = await response.text();
+
+        // 3. split text into rows and skip header
+        const rows = csvText.split('\n').slice(1);
+
+        // 4. scan each row
+        for (const row of rows) {
+            // split row into columns
+            const columns = row.split(splitChar).map(col => col.trim());
+
+            // enough columns?
+            if (columns.length > Math.max(searchIndex, returnIndex)) {
+
+                // 5. conditional check
+                if (columns[searchIndex] === searchValue) {
+
+                    // 6. match found, return the value from returnIndex
+                    return columns[returnIndex];
+                }
+            }
+        }
+
+        // no match found
+        console.warn(`"${searchValue}" value, ${searchIndex}. not found at index`);
+        return null;
+
+    } catch (error) {
+        console.error('An error occured while reading csv:', error);
+        return null;
     }
 }
