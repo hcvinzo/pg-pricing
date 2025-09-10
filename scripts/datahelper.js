@@ -1,3 +1,36 @@
+async function populateSelectFromData(data, selectControl, defaultOptionText = "OXI", valueFieldIndex = 0, textFieldIndex = 1) {
+    try {
+        // Select menüsüne varsayılan bir seçenek ekle
+        const defaultOption = document.createElement('option');
+        defaultOption.value = "";
+        defaultOption.textContent = defaultOptionText;
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        selectControl.appendChild(defaultOption);
+
+        // 4. Her bir satırı işle ve select'e ekle
+        data.forEach(columns => {
+            // Her satırı virgülle ayır
+
+            // Eğer satır boş değilse devam et
+            if (columns.length >= 2) {
+                const code = columns[valueFieldIndex].trim();
+                const name = columns[textFieldIndex].trim();
+
+                // Yeni bir <option> elementi oluştur
+                const option = document.createElement('option');
+                option.value = code;
+                option.textContent = name;
+
+                // Select'e option'ı ekle
+                selectControl.appendChild(option);
+            }
+        });
+    } catch (error) {
+        console.error('Veri yüklenirken bir hata oluştu:', error);
+    }
+}
+
 async function populateSelectFromCsv(csvFileUrl, selectControl, defaultOptionText = "OXI", valueFieldIndex = 0, textFieldIndex = 1, splitChar = ',') {
     try {
 
@@ -11,33 +44,7 @@ async function populateSelectFromCsv(csvFileUrl, selectControl, defaultOptionTex
             // 3. Metni satırlara ayır ve ilk satırı (başlıkları) atla
             const rows = csvText.split('\n').slice(1);
 
-            // Select menüsüne varsayılan bir seçenek ekle
-            const defaultOption = document.createElement('option');
-            defaultOption.value = "";
-            defaultOption.textContent = defaultOptionText;
-            defaultOption.disabled = true;
-            defaultOption.selected = true;
-            selectControl.appendChild(defaultOption);
-
-            // 4. Her bir satırı işle ve select'e ekle
-            rows.forEach(row => {
-                // Her satırı virgülle ayır
-                const columns = row.split(splitChar);
-
-                // Eğer satır boş değilse devam et
-                if (columns.length >= 2) {
-                    const code = columns[valueFieldIndex].trim();
-                    const name = columns[textFieldIndex].trim();
-
-                    // Yeni bir <option> elementi oluştur
-                    const option = document.createElement('option');
-                    option.value = code;
-                    option.textContent = name;
-
-                    // Select'e option'ı ekle
-                    selectControl.appendChild(option);
-                }
-            });
+            return populateSelectFromData(rows, selectControl, defaultOptionText, valueFieldIndex, textFieldIndex, splitChar);
 
         }).catch(err => {
             throw new Error('Dosya yüklenirken bir hata oluştu: ' + err.message);
@@ -57,7 +64,52 @@ async function populateSelectFromCsv(csvFileUrl, selectControl, defaultOptionTex
     * @param {string} splitChar - split character, default is comma (,).
     * @returns {Promise<string|null>} -  found value or null if not found or error.
     */
-async function findValueInCsv(csvUrl, searchIndex, searchValue, returnIndex, splitChar) {
+async function findRowInCsv(csvUrl, searchIndex, searchValue, splitChar) {
+    try {
+        return getAllRowsFromCsv(csvUrl, splitChar).then(rows => {
+            for (const row of rows) {
+                // 5. conditional check
+                if (row[searchIndex] === searchValue) {
+
+                    // 6. match found, return the row
+                    return row;
+                }
+            }
+
+            // no match found
+            console.warn(`"${searchValue}" value, ${searchIndex}. not found at index`);
+            return null;
+        }).catch(err => {
+            throw new Error('Dosya yüklenirken bir hata oluştu: ' + err.message);
+        });
+    } catch (error) {
+        console.error('An error occured while reading csv:', error);
+        return null;
+    }
+}
+
+async function findRowInData(data, searchIndex, searchValue, splitChar) {
+    try {
+        for (const row of data) {
+            // 5. conditional check
+            if (row[searchIndex] === searchValue) {
+
+                // 6. match found, return the row
+                return row;
+            }
+        }
+
+        // no match found
+        console.warn(`"${searchValue}" value, ${searchIndex}. not found at index`);
+        return null;
+
+    } catch (error) {
+        console.error('An error occured while reading csv:', error);
+        return null;
+    }
+}
+
+async function getAllRowsFromCsv(csvUrl, splitChar = ',') {
     try {
         // 1. fetch csv file
         const response = await fetch(csvUrl);
@@ -72,29 +124,9 @@ async function findValueInCsv(csvUrl, searchIndex, searchValue, returnIndex, spl
 
         // 3. split text into rows and skip header
         const rows = csvText.split('\n').slice(1);
-
-        // 4. scan each row
-        for (const row of rows) {
-            // split row into columns
-            const columns = row.split(splitChar).map(col => col.trim());
-
-            // enough columns?
-            if (columns.length > Math.max(searchIndex, returnIndex)) {
-
-                // 5. conditional check
-                if (columns[searchIndex] === searchValue) {
-
-                    // 6. match found, return the value from returnIndex
-                    return columns[returnIndex];
-                }
-            }
-        }
-
-        // no match found
-        console.warn(`"${searchValue}" value, ${searchIndex}. not found at index`);
-        return null;
-
-    } catch (error) {
+        return rows.map(row => row.split(splitChar).map(col => col.trim()));
+    }
+    catch (error) {
         console.error('An error occured while reading csv:', error);
         return null;
     }

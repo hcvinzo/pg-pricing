@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 
-<body>
+<body class="bg-light">
 
     <!-- Desktop Sidebar -->
     <div id="sidebar" class="sidebar d-none d-md-flex flex-column">
-        <button class="btn btn-light mb-3 mx-2" id="toggleBtn">
+        <button class="btn btn-light mb-3" id="toggleBtn">
             <i class="bi bi-list"></i>
         </button>
         <a href="/" class="nav-link"><i class="bi bi-house"></i> Home</a>
@@ -62,10 +62,11 @@
         <h3>Wholesale</h3>
         <div class="row">
             <!-- Left: Form -->
-            <div class="col-md-9 mb-4">
-                <div class="card shadow-sm">
+            <div class="col-md-10 mb-4">
+                <div class="card shadow">
                     <div class="card-body">
-                        <h5 class="card-title">Input Form</h5>
+                        <h5 class="card-title">Frame Specifications</h5>
+                        <hr>
                         <form class="needs-validation" novalidate>
 
                             <div class="row">
@@ -73,9 +74,6 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="frame-select">ΚΟΡΝΙΖΑ</label>
                                     <select class="form-select" id="frame-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
                                     </select>
                                     <div class="d-flex flex-row gap-5">
                                         <small><span class="fw-semibold">Τιμή μονάδας :</span><span
@@ -91,9 +89,6 @@
                                     <!-- Secondary Frame -->
                                     <label class="form-label" for="second-frame-select">ΠΑΤΟΥΡΑ</label>
                                     <select class="form-select" id="second-frame-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
                                     </select>
                                     <div class="d-flex flex-row gap-5">
                                         <small><span class="fw-semibold">Τιμή μονάδας :</span><span
@@ -141,11 +136,9 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="outer-measure-select">ΕΞΩΤΕΡΙΚΑ</label>
                                     <select class="form-select" id="outer-measure-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="0">OXI</option>
+                                        <option disabled selected value="0">OXI</option>
                                         <option value="1">NAI</option>
                                     </select>
-                                    <p id="statusMessage" class="mt-3"></p>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
@@ -155,11 +148,7 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="back-panel-select">ΤΖΑΜΙ-ΠΛΑΤΗ</label>
                                     <select class="form-select" id="back-panel-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
                                     </select>
-                                    <p id="statusMessage" class="mt-3"></p>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
@@ -171,11 +160,7 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="extra-back-frame-select">ΕΠΙΤΡΑΠΕΖΙΑ ΠΛΑΤΗ</label>
                                     <select class="form-select" id="extra-back-frame-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
                                     </select>
-                                    <p id="statusMessage" class="mt-3"></p>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
@@ -185,41 +170,29 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="mirror-select">ΚΑΘΡΕΠΤΗΣ</label>
                                     <select class="form-select" id="mirror-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
                                     </select>
-                                    <p id="statusMessage" class="mt-3"></p>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Paspartout -->
+                            <!-- Passepartouts -->
                             <div class="row">
                                 <div class="col-md-6 g-3">
-                                    <label class="form-label" for="paspartout-select">ΠΑΣΠΑΡΤΟΥ</label>
-                                    <select class="form-select" id="paspartout-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
+                                    <label class="form-label" for="passepartout-select">ΠΑΣΠΑΡΤΟΥ</label>
+                                    <select class="form-select" id="passepartout-select" required>
                                     </select>
-                                    <p id="statusMessage" class="mt-3"></p>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
                                 </div>
 
-                                <!-- Extra Work -->
+                                <!-- Extra Service -->
                                 <div class="col-md-6 g-3">
-                                    <label class="form-label" for="extra-work-select">ΕΡΓΑΣΙΕΣ</label>
-                                    <select class="form-select" id="extra-work-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
+                                    <label class="form-label" for="extra-service-select">ΕΡΓΑΣΙΕΣ</label>
+                                    <select class="form-select" id="extra-service-select" required>
                                     </select>
-                                    <p id="statusMessage" class="mt-3"></p>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
@@ -231,9 +204,6 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="back-board-type-select">ΤΥΠΟΣ ΚΟΝΤΡΑΣ</label>
                                     <select class="form-select" id="back-board-type-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select
@@ -259,9 +229,10 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="printing-select">ΕΚΤΥΠΩΣΗ</label>
                                     <select class="form-select" id="printing-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
+                                        <option disabled selected value>OXI</option>
+                                        <option value="1">ΧΑΡΤΙ</option>
+                                        <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
+                                        <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select
@@ -272,9 +243,6 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="artwork-select">Artworks</label>
                                     <select class="form-select" id="artwork-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select
@@ -287,9 +255,6 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="strecthen-select">ΤΕΛΑΡΩΜΑ</label>
                                     <select class="form-select" id="strecthen-select" required>
-                                        <option disabled selected value>Select</option>
-                                        <option value="2">Option A</option>
-                                        <option value="3">Option B</option>
                                     </select>
                                     <p id="statusMessage" class="mt-3"></p>
                                     <div class="invalid-feedback">
@@ -303,48 +268,201 @@
             </div>
 
             <!-- Right : Price Summary -->
-            <div class="col-md-3">
-                <div class="card bg-light shadow-sm">
-                    <div class="card-header">
-                        Price Summary
-                    </div>
+            <div class="col-md-2">
+                <div class="card shadow">
                     <div class="card-body">
-                        <ul class="list-group mb-3">
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h7 class="my-0">Net Price</h7>
-                                </div>
-                                <span class="text-muted" id="net-price-label">$12</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 class="my-0">Discount</h6>
-                                </div>
-                                <span class="text-muted">$8</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Total (USD)</span>
-                                <strong>$20</strong>
-                            </li>
-                        </ul>
+                        <h6 class="card-title">Price Summary</h6>
+                        <hr>
+                        <!-- net price -->
+                        <div class="row">
+                            <div class="col-6">ΚΑΘΑΡΗ ΤΙΜΗ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="net-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+                        <!-- discount -->
+                        <div class="row">
+                            <div class="col-6">ΕΚΠΤΩΣΗ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="discount-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- price after discount -->
+                        <div class="row">
+                            <div class="col-6">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="after-discount-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+                        <!-- vat -->
+                        <div class="row">
+                            <div class="col-6">ΦΠΑ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="vat-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <!-- total with vat -->
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>ΣΥΝΟΛΟ ΜΕ ΦΠΑ:</h6>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="total-with-vat-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- cost breakdown -->
+                        <h6>Cost Breakdown</h6>
+
+                        <!-- frame price -->
+                        <div class="row">
+                            <div class="col-6">ΤΙΜΗ ΚΟΡΝΙΖΑΣ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="frame-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <!-- rebate price -->
+                        <div class="row">
+                            <div class="col-6">ΤΙΜΗ ΠΑΤΟΥΡΑΣ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="rebate-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <!-- back glass price -->
+                        <div class="row">
+                            <div class="col-6">ΤΙΜΗ ΤΖΑΜΙ-ΠΛΑΤΗ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="back-glass-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <!-- passapartouts price -->
+                        <div class="row">
+                            <div class="col-6">ΠΑΣΠΑΡΤΟΥ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="passapartout-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <!-- labor price -->
+                        <div class="row">
+                            <div class="col-6">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="labor-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <!-- mirror price -->
+                        <div class="row">
+                            <div class="col-6">ΚΑΘΡΕΠΤΗΣ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="mirror-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <!-- Stretching price -->
+                        <div class="row">
+                            <div class="col-6">ΤΕΛΑΡΩΜΑ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="stretching-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <!-- printing price -->
+                        <div class="row">
+                            <div class="col-6">ΕΚΤΥΠΩΣΗ:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="printing-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <!-- artworks price -->
+                        <div class="row">
+                            <div class="col-6">ARTWORKS:</div>
+                            <div class="col-6 text-end">
+                                <span class="text-muted" id="artworks-price-label">0</span>
+                                <span>€</span>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-danger pt-10" id="clear-button"><i
+                                        class="bi bi-x-lg"></i>&nbsp;Clear</button>
+                            </div>
+                            <div class="col-6">
+                                <select class="form-select text-end" id="discount-select" required>
+                                    <option selected value="0">0%</option>
+                                    <option value="5">5%</option>
+                                    <option value="10">10%</option>
+                                    <option value="10">15%</option>
+                                    <option value="10">20%</option>
+                                    <option value="10">25%</option>
+                                    <option value="10">30%</option>
+                                    <option value="10">35%</option>
+                                    <option value="10">40%</option>
+                                    <option value="10">45%</option>
+                                    <option value="10">50%</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/datahelper.js"></script>
+    <script src="scripts/framehelper.js"></script>
+
     <script>
+
+        const priceSource = 'wholesale';
+        let framePricesData = null;
+        let backPanelGlasses = null;
+        let extraBackFrames = null;
+        let mirrors = null;
+        let paspartouts = null;
+        let extraServices = null;
+        let backingBoardTypes = null;
+        let artworkPrices = null;
+        let strecthes = null;
+
+        let selectedFrameData = null;
+        let selectedSecondFrameData = null;
 
         const form = document.getElementsByClassName('needs-validation')[0];
 
         // Get a reference to the input element and the span element
         const frameSelect = document.getElementById('frame-select');
         const frameUnitPrice = document.getElementById('frame-unit-price');
+        const frameUnit = document.getElementById('frame-unit');
+
+        const secondFrameSelect = document.getElementById('second-frame-select');
+        const secondFrameUnitPrice = document.getElementById('second-frame-unit-price');
+        const secondFrameUnit = document.getElementById('second-frame-unit');
 
         //const secondFrameInput = document.getElementById('second-frame-input');
         //const netPriceLabel = document.getElementById('net-price-label');
@@ -386,24 +504,136 @@
 
         form.addEventListener('input', (event) => {
             //calculateAndDisplaySquare();
+            calculateFrameUnit();
+            calculateSecondFrameUnit();
         });
 
         frameSelect.addEventListener('input', (event) => {
-            findValueInCsv(
-                'data-files/frame-prices.csv',
-                0, event.target.value
-                , 1, ';').then((data) => {
-                    frameUnitPrice.textContent = data;
-                    //document.querySelector('.frame-unit').textContent = data['ΜΕΤΡΟ'];
+            findRowInData(
+                framePricesData,
+                0, event.target.value).then((data) => {
+                    selectedFrameData = data;
+                    frameUnitPrice.textContent = getFrameUnitPrice(priceSource);
+                    //x" calculateFrameUnit();
+                });
+        });
+
+        secondFrameSelect.addEventListener('input', (event) => {
+            findRowInData(
+                framePricesData,
+                0, event.target.value).then((data) => {
+                    selectedSecondFrameData = data;
+                    secondFrameUnitPrice.textContent = getFrameUnitPrice(priceSource, true); // true means second frame
+                    //calculateSecondFrameUnit();
+                    //calculateFrameUnit();
                 });
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            populateSelectFromCsv(
-                'data-files/frame-prices.csv',
-                document.getElementById('frame-select'),
-                "OXI", 0, 0, ';'
-            );
+
+            // fetch the frame prices data and populate the select elements
+            getAllRowsFromCsv('data-files/frame-prices.csv', ';').then((data) => {
+                framePricesData = data;
+
+                populateSelectFromData(
+                    framePricesData,
+                    document.getElementById('frame-select'),
+                    "OXI", 0, 0, ';'
+                );
+                populateSelectFromData(
+                    framePricesData,
+                    document.getElementById('second-frame-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
+
+            // fetch back panel glasses and populate the select element
+            getAllRowsFromCsv('data-files/back-panel-glasses.csv', ';').then((data) => {
+                backPanelGlasses = data;
+
+                populateSelectFromData(
+                    backPanelGlasses,
+                    document.getElementById('back-panel-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
+
+            // fetch extra back frames and populate the select element
+            getAllRowsFromCsv('data-files/extra-back-frames.csv', ';').then((data) => {
+                extraBackFrames = data;
+
+                populateSelectFromData(
+                    extraBackFrames,
+                    document.getElementById('extra-back-frame-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
+
+            // fetch mirrors and populate the select element
+            getAllRowsFromCsv('data-files/mirrors.csv', ';').then((data) => {
+                mirrors = data;
+
+                populateSelectFromData(
+                    mirrors,
+                    document.getElementById('mirror-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
+
+            // fetch paspartouts and populate the select element
+            getAllRowsFromCsv('data-files/passepartouts.csv', ';').then((data) => {
+                paspartouts = data;
+
+                populateSelectFromData(
+                    paspartouts,
+                    document.getElementById('passepartout-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
+
+            // fetch extra services and populate the select element
+            getAllRowsFromCsv('data-files/extra-services.csv', ';').then((data) => {
+                extraServices = data;
+
+                populateSelectFromData(
+                    extraServices,
+                    document.getElementById('extra-service-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
+
+            // fetch backing board types and populate the select element
+            getAllRowsFromCsv('data-files/backing-board-types.csv', ';').then((data) => {
+                backingBoardTypes = data;
+
+                populateSelectFromData(
+                    backingBoardTypes,
+                    document.getElementById('back-board-type-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
+
+            // fetch artwork prices and populate the select element
+            getAllRowsFromCsv('data-files/artwork-prices.csv', ';').then((data) => {
+                artworkPrices = data;
+
+                populateSelectFromData(
+                    artworkPrices,
+                    document.getElementById('artwork-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
+
+            // fetch stretchens and populate the select element
+            getAllRowsFromCsv('data-files/stretchens.csv', ';').then((data) => {
+                strecthes = data;
+
+                populateSelectFromData(
+                    strecthes,
+                    document.getElementById('strecthen-select'),
+                    "OXI", 0, 0, ';'
+                );
+            });
         });
     </script>
 </body>
