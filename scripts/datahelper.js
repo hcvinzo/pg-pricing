@@ -87,17 +87,15 @@ async function findRowInCsv(csvUrl, searchIndex, searchValue, splitChar) {
     }
 }
 
-async function findRowInData(data, searchIndex, searchValue, splitChar) {
+async function findRowInData(data, searchIndex, searchValue) {
     try {
         for (const row of data) {
             // 5. conditional check
             if (row[searchIndex] === searchValue) {
-
                 // 6. match found, return the row
                 return row;
             }
         }
-
         // no match found
         console.warn(`"${searchValue}" value, ${searchIndex}. not found at index`);
         return null;

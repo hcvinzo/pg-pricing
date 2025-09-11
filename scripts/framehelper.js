@@ -135,7 +135,13 @@ function getDiscount(withDiscount = true) {
 }
 
 function calculateOuterMeasure() {
-    return getSelectValueAsNumber(outerMeasureSelect) / 100;
+    if (outerMeasureSelect.value === "0") {
+        return 0;
+    } else {
+        const outerFramePrice = selectedOuterFrame ? safeParseNumber(selectedOuterFrame[1]) : 0;
+        const outerSecondFramePrice = selectedOuterSecondFrame ? safeParseNumber(selectedOuterSecondFrame[1]) : 0;
+        return (outerFramePrice + outerSecondFramePrice) / 100;
+    }
 }
 
 function calculateSquareMeter(additional = 0) {
