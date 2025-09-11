@@ -59,7 +59,7 @@
 
     <!-- Content -->
     <div id="content" class="content">
-        <h3>Wholesale</h3>
+        <h3>Wholesale+</h3>
         <div class="row">
             <!-- Left: Form -->
             <div class="col-md-9 mb-4">
@@ -136,7 +136,7 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="outer-measure-select">ΕΞΩΤΕΡΙΚΑ</label>
                                     <select class="form-select" id="outer-measure-select">
-                                        <option disabled selected value="0">OXI</option>
+                                        <option selected value="0">OXI</option>
                                         <option value="1">NAI</option>
                                     </select>
                                     <div class="invalid-feedback">
@@ -147,10 +147,20 @@
                                 <!-- Back Panel (Glass) -->
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="back-panel-select">ΤΖΑΜΙ-ΠΛΑΤΗ</label>
-                                    <select class="form-select" id="back-panel-select">
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <select class="form-select" id="back-panel-select"></select>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <input type="number" class="form-control"
+                                                    id="back-glass-squaremeter-label" value="0" readonly>
+                                                <span class="input-group-text">m<sup>2</sup></span>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Please select
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -169,8 +179,19 @@
                                 <!-- Mirror -->
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="mirror-select">ΚΑΘΡΕΠΤΗΣ</label>
-                                    <select class="form-select" id="mirror-select">
-                                    </select>
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <select class="form-select" id="mirror-select">
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" id="mirror-squaremeter-label"
+                                                    value="0" readonly>
+                                                <span class="input-group-text">m<sup>2</sup></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
@@ -200,8 +221,18 @@
                             </div>
 
                             <div class="row">
-                                <!-- Backing board Type -->
+                                <!-- Canvas Stretching -->
                                 <div class="col-md-6 g-3">
+                                    <label class="form-label" for="stretching-select">ΤΕΛΑΡΩΜΑ</label>
+                                    <select class="form-select" id="stretching-select">
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select
+                                    </div>
+                                </div>
+
+                                <!-- Backing board Type -->
+                                <div class="col-md-4 g-3">
                                     <label class="form-label" for="back-board-type-select">ΤΥΠΟΣ ΚΟΝΤΡΑΣ</label>
                                     <select class="form-select" id="back-board-type-select">
                                     </select>
@@ -211,7 +242,7 @@
                                 </div>
 
                                 <!-- Backing board measurements -->
-                                <div class="col-md-6 g-3">
+                                <div class="col-md-2 g-3">
                                     <label for="back-board-length-input" class="form-label">ΜΕΤΡΑ ΚΟΝΤΡΑΣ</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" id="back-board-length-input" value="0"
@@ -228,14 +259,25 @@
                                 <!-- Printing -->
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="printing-select">ΕΚΤΥΠΩΣΗ</label>
-                                    <select class="form-select" id="printing-select">
-                                        <option selected value>OXI</option>
-                                        <option value="1">ΧΑΡΤΙ</option>
-                                        <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
-                                        <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <select class="form-select" id="printing-select">
+                                                <option selected value>OXI</option>
+                                                <option value="1">ΧΑΡΤΙ</option>
+                                                <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
+                                                <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <input type="number" class="form-control"
+                                                    id="printing-squaremeter-label" value="0" readonly>
+                                                <span class="input-group-text">m<sup>2</sup></span>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Please select
+                                        </div>
                                     </div>
                                 </div>
 
@@ -246,28 +288,6 @@
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <!-- Canvas Stretching -->
-                                <div class="col-md-6 g-3">
-                                    <label class="form-label" for="stretching-select">ΤΕΛΑΡΩΜΑ</label>
-                                    <select class="form-select" id="stretching-select">
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select
-                                    </div>
-                                </div>
-                                <div class="col-md-6 g-3">
-                                    <label class="form-label fw-semibold" for="stretching-select">Calculated
-                                        M<sup>2</sup> :
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" id="outer-measure-label" value="0"
-                                            data-type="decimal" readonly>
-                                        <span class="input-group-text">M<sup>2</sup></span>
                                     </div>
                                 </div>
                             </div>
@@ -447,6 +467,7 @@
     <script src="scripts/framehelper.js"></script>
     <script>
         const priceSource = 'wholesaleplus';
+        const pricesIncludeVat = false;
     </script>
     <script src="scripts/page-wholesale.js"></script>
 

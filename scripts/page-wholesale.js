@@ -19,7 +19,6 @@ let selectedExtraService = null;
 let selectedBackBoardType = null;
 let selectedArtwork = null;
 let selectedStretching = null;
-let selectedPrinting = null;
 let selectedOuterFrame = null;
 let selectedOuterSecondFrame = null;
 
@@ -46,7 +45,9 @@ let stretchingSelect = null;
 let heightInput = null;
 let widthInput = null;
 let backBoardLengthInput = null;
-let outerMeasureLabel = null;
+let mirrorSquaremeterLabel = null;
+let printingSquaremeterLabel = null;
+let backGlassSquaremeterPanel = null
 let netPriceLabel = null;
 let discountLabel = null;
 let afterDiscountLabel = null;
@@ -95,7 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
     heightInput = document.getElementById('height-input');
     widthInput = document.getElementById('width-input');
     backBoardLengthInput = document.getElementById('back-board-length-input');
-    outerMeasureLabel = document.getElementById('outer-measure-label');
+    mirrorSquaremeterLabel = document.getElementById('mirror-squaremeter-label');
+    printingSquaremeterLabel = document.getElementById('printing-squaremeter-label');
+    backGlassSquaremeterPanel = document.getElementById('back-glass-squaremeter-label');
 
     // summary labels
     netPriceLabel = document.getElementById('net-price-label');
@@ -139,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // fetch back panel glasses and populate the select element
-        getAllRowsFromCsv('data-files/back-panel-glasses.csv', ';').then((data) => {
+        getAllRowsFromCsv('data-files/back-panel-glasses-' + priceSource + '.csv', ';').then((data) => {
             backPanelGlasses = data;
 
             populateSelectFromData(
@@ -379,10 +382,10 @@ document.addEventListener('DOMContentLoaded', () => {
         summaryArtworksPriceLabel.textContent = formatNumber(calculateArtworkPrice());
 
         // totals
-        netPriceLabel.textContent = formatNumber(calculateNetPrice(false)); // price before discount and vat
+        netPriceLabel.textContent = formatNumber(calculateNetPrice(false, pricesIncludeVat)); // price before discount and vat
         discountLabel.textContent = discountSelect.options[discountSelect.selectedIndex].text.replace('%', ''); // discount rate
 
-        let priceWithoutVat = calculateNetPrice();
+        let priceWithoutVat = calculateNetPrice(false, pricesIncludeVat);
         afterDiscountLabel.textContent = formatNumber(priceWithoutVat); // price after discount but before vat
 
         let priceWithVat = priceWithoutVat * vatRate;
@@ -394,12 +397,18 @@ document.addEventListener('DOMContentLoaded', () => {
         frameUnitLabel.textContent = formatNumber(frameUnit);
         secondFrameUnitLabel.textContent = formatNumber(secondFrameUnit);
 
-        outerMeasureLabel.value = formatNumber(calculateSquareMeter());
+        mirrorSquaremeterLabel.value = formatNumber(calculateSquareMeter());
+        backGlassSquaremeterPanel.value = formatNumber(calculateSquareMeter());
+
+        if (printingSelect.value && (printingSelect.value == "2" || printingSelect.value == "3")) {
+            printingSquaremeterLabel.value = formatNumber(calculateSquareMeter(8));
+        } else
+            printingSquaremeterLabel.value = formatNumber(calculateSquareMeter());
     }
 });
 
-function calculateNetPrice(withDiscount = true) {
-    return calculateFramePrice(withDiscount) +
+function calculateNetPrice(withDiscount = true, excludeVat = false) {
+    let total = calculateFramePrice(withDiscount) +
         calculateSecondFramePrice(withDiscount) +
         calculateBackPanelGlassPrice(withDiscount) +
         calculatePasspartoutPrice(withDiscount) +
@@ -408,4 +417,7 @@ function calculateNetPrice(withDiscount = true) {
         calculateStretchingPrice(withDiscount) +
         calculatePrintingPrice(withDiscount) +
         calculateArtworkPrice(withDiscount);
+    if (excludeVat)
+        total = total / vatRate;
+    return total;
 }

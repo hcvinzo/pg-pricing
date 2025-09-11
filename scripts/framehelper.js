@@ -1,4 +1,18 @@
-function getFrameUnitPrice(priceSource, isSecondFrame = false) {
+function getPriceIndex() {
+    let priceIndex = 1;
+    if (priceSource == "wholesale") {
+        priceIndex = 1;
+    } else if (priceSource == "stampless") {
+        priceIndex = 2;
+    } else if (priceSource == "wholesaleplus") {
+        priceIndex = 3;
+    } else if (priceSource == "retail") {
+        priceIndex = 4;
+    }
+    return priceIndex;
+}
+
+function getFrameUnitPrice(isSecondFrame = false) {
     try {
         const frameData = isSecondFrame ? selectedSecondFrame : selectedFrame;
 
@@ -6,17 +20,7 @@ function getFrameUnitPrice(priceSource, isSecondFrame = false) {
             return 0;
         };
 
-        let priceIndex = 2;// default to wholesale price
-        if (priceSource === 'wholesale') {
-            priceIndex = 2;
-        } else if (priceSource === 'retail') {
-            priceIndex = 3;
-        } else if (priceSource === 'wholesaleplus') {
-            priceIndex = 4;
-        } else if (priceSource === 'stampless') {
-            priceIndex = 5;
-        }
-        return frameData ? safeParseNumber(frameData[priceIndex]) : 0;
+        return frameData ? safeParseNumber(frameData[getPriceIndex() + 1]) : 0;
     }
     catch (error) {
         console.error('An error occured while getting frame unit price:', error);
@@ -62,7 +66,7 @@ function getBackPanelGlassOuterUnit() {
 
 function getExtraBackPanelUnit() {
     try {
-        return selectedExtraBackPanel ? safeParseNumber(selectedExtraBackPanel[1]) : 0;
+        return selectedExtraBackPanel ? safeParseNumber(selectedExtraBackPanel[getPriceIndex()]) : 0;
     }
     catch (error) {
         console.error('An error occured while getting extra back panel unit', error);
@@ -72,7 +76,7 @@ function getExtraBackPanelUnit() {
 
 function getPasspartoutUnitPrice() {
     try {
-        return selectedPasspartout ? safeParseNumber(selectedPasspartout[1]) : 0;
+        return selectedPasspartout ? safeParseNumber(selectedPasspartout[getPriceIndex()]) : 0;
     }
     catch (error) {
         console.error('An error occured while getting extra back panel unit', error);
@@ -82,7 +86,7 @@ function getPasspartoutUnitPrice() {
 
 function getExtraWorkUnitPrice() {
     try {
-        return selectedExtraService ? safeParseNumber(selectedExtraService[1]) : 0;
+        return selectedExtraService ? safeParseNumber(selectedExtraService[getPriceIndex()]) : 0;
     }
     catch (error) {
         console.error('An error occured while getting extra work unit price', error);
@@ -92,7 +96,7 @@ function getExtraWorkUnitPrice() {
 
 function getMirrorUnitPrice() {
     try {
-        return selectedMirror ? safeParseNumber(selectedMirror[1]) : 0;
+        return selectedMirror ? safeParseNumber(selectedMirror[getPriceIndex()]) : 0;
     }
     catch (error) {
         console.error('An error occured while getting mirror unit price', error);
@@ -102,7 +106,7 @@ function getMirrorUnitPrice() {
 
 function getStretchingUnitPrice() {
     try {
-        return selectedStretching ? safeParseNumber(selectedStretching[1]) : 0;
+        return selectedStretching ? safeParseNumber(selectedStretching[getPriceIndex()]) : 0;
     }
     catch (error) {
         console.error('An error occured while getting stretching unit price', error);
@@ -122,7 +126,7 @@ function getBackBoardTypeUnitPrice() {
 
 function getArtworkUnitPrice() {
     try {
-        return selectedArtwork ? safeParseNumber(selectedArtwork[1]) : 0;
+        return selectedArtwork ? safeParseNumber(selectedArtwork[getPriceIndex()]) : 0;
     }
     catch (error) {
         console.error('An error occured while getting artwork unit price', error);
@@ -175,11 +179,11 @@ function calculateSecondFrameUnit() {
 };
 
 function calculateFramePrice(withDiscount = true) {
-    return (calculateFrameUnit() * getFrameUnitPrice(priceSource)) * getDiscount(withDiscount);
+    return (calculateFrameUnit() * getFrameUnitPrice()) * getDiscount(withDiscount);
 }
 
 function calculateSecondFramePrice(withDiscount = true) {
-    return (calculateSecondFrameUnit() * getFrameUnitPrice(priceSource, true)) * getDiscount(withDiscount);
+    return (calculateSecondFrameUnit() * getFrameUnitPrice(true)) * getDiscount(withDiscount);
 }
 
 function calculateBackPanelGlassPrice(withDiscount = true) {
@@ -265,6 +269,9 @@ function calculatePrintingPrice(withDiscount = true) {
             cost = squareMeterAdditional * 70;
         }
     }
+
+    if (priceSource == "retail")
+        cost = cost * 2;
 
     return cost * getDiscount(withDiscount);
 }
