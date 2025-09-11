@@ -80,8 +80,9 @@
             data-sortable="true" data-sort-name="legend" data-sort-order="asc">
             <thead>
                 <tr>
+                    <th data-field="image_url" data-width="140px" data-align="center" data-formatter="imageFormatter">
+                        Url</th>
                     <th data-field="reference">Reference</th>
-                    <th data-field="image_url" data-formatter="imageFormatter">Url</th>
                     <th data-field="legend">Legend</th>
                     <th data-field="quantity">qty</th>
                     <th data-field="hasQuantity" data-formatter="checkboxFormatter">Has Quantity</th>
@@ -117,7 +118,7 @@
             if (row.quantity > 0) {
                 return `<span class="text-success"><i class="bi bi-check-square-fill"></i> In Stock</span>`;
             }
-            return `<span class="text-danger"><i class="bi bi-x-square-fill"></i> Out</span>`;
+            return `<span class="text-danger"><i class="bi bi-x-square-fill"></i> Out Of Stock</span>`;
         }
 
         function showImage(url) {
