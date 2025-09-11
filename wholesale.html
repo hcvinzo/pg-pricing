@@ -137,7 +137,7 @@
                                     <label class="form-label" for="outer-measure-select">ΕΞΩΤΕΡΙΚΑ</label>
                                     <select class="form-select" id="outer-measure-select" required>
                                         <option disabled selected value="0">OXI</option>
-                                        <option value="1">NAI</option>
+                                        <option value="0">NAI</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select
@@ -177,11 +177,11 @@
                                 </div>
                             </div>
 
-                            <!-- Passepartouts -->
+                            <!-- Passpartouts -->
                             <div class="row">
                                 <div class="col-md-6 g-3">
-                                    <label class="form-label" for="passepartout-select">ΠΑΣΠΑΡΤΟΥ</label>
-                                    <select class="form-select" id="passepartout-select" required>
+                                    <label class="form-label" for="passpartout-select">ΠΑΣΠΑΡΤΟΥ</label>
+                                    <select class="form-select" id="passpartout-select" required>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select
@@ -215,7 +215,7 @@
                                     <label for="back-board-length-input" class="form-label">ΜΕΤΡΑ ΚΟΝΤΡΑΣ</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" id="back-board-length-input" value="0"
-                                            data-type="integer" required>
+                                            data-type="decimal" required>
                                         <span class="input-group-text">m</span>
                                     </div>
                                     <div class="invalid-feedback">
@@ -229,7 +229,7 @@
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="printing-select">ΕΚΤΥΠΩΣΗ</label>
                                     <select class="form-select" id="printing-select" required>
-                                        <option disabled selected value>OXI</option>
+                                        <option selected value>OXI</option>
                                         <option value="1">ΧΑΡΤΙ</option>
                                         <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
                                         <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
@@ -251,12 +251,11 @@
                             </div>
 
                             <div class="row">
-                                <!-- Stretchen -->
+                                <!-- Canvas Stretching -->
                                 <div class="col-md-6 g-3">
-                                    <label class="form-label" for="strecthen-select">ΤΕΛΑΡΩΜΑ</label>
-                                    <select class="form-select" id="strecthen-select" required>
+                                    <label class="form-label" for="stretching-select">ΤΕΛΑΡΩΜΑ</label>
+                                    <select class="form-select" id="stretching-select" required>
                                     </select>
-                                    <p id="statusMessage" class="mt-3"></p>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
@@ -286,7 +285,7 @@
                             <div class="col-6">ΕΚΠΤΩΣΗ:</div>
                             <div class="col-6 text-end">
                                 <span class="text-muted" id="discount-label">0</span>
-                                <span>€</span>
+                                <span>%</span>
                             </div>
                         </div>
                         <hr>
@@ -351,11 +350,11 @@
                             </div>
                         </div>
 
-                        <!-- passapartouts price -->
+                        <!-- passpartouts price -->
                         <div class="row">
                             <div class="col-6">ΠΑΣΠΑΡΤΟΥ:</div>
                             <div class="col-6 text-end">
-                                <span class="text-muted" id="passapartout-price-label">0</span>
+                                <span class="text-muted" id="passpartout-price-label">0</span>
                                 <span>€</span>
                             </div>
                         </div>
@@ -412,17 +411,17 @@
                             </div>
                             <div class="col-6">
                                 <select class="form-select text-end" id="discount-select" required>
-                                    <option selected value="0">0%</option>
-                                    <option value="5">5%</option>
-                                    <option value="10">10%</option>
-                                    <option value="10">15%</option>
-                                    <option value="10">20%</option>
-                                    <option value="10">25%</option>
-                                    <option value="10">30%</option>
-                                    <option value="10">35%</option>
-                                    <option value="10">40%</option>
-                                    <option value="10">45%</option>
-                                    <option value="10">50%</option>
+                                    <option selected value="1">0%</option>
+                                    <option value="0.95">5%</option>
+                                    <option value="0.90">10%</option>
+                                    <option value="0.85">15%</option>
+                                    <option value="0.80">20%</option>
+                                    <option value="0.75">25%</option>
+                                    <option value="0.70">30%</option>
+                                    <option value="0.65">35%</option>
+                                    <option value="0.60">40%</option>
+                                    <option value="0.55">45%</option>
+                                    <option value="0.50">50%</option>
                                 </select>
                             </div>
                         </div>
@@ -442,79 +441,126 @@
         const priceSource = 'wholesale';
         let framePricesData = null;
         let backPanelGlasses = null;
-        let extraBackFrames = null;
+        let extraBackPanels = null;
         let mirrors = null;
-        let paspartouts = null;
+        let passpartouts = null;
         let extraServices = null;
-        let backingBoardTypes = null;
+        let backBoardTypes = null;
         let artworkPrices = null;
-        let strecthes = null;
+        let stretchings = null;
 
-        let selectedFrameData = null;
-        let selectedSecondFrameData = null;
+        let selectedFrame = null;
+        let selectedSecondFrame = null;
+        let selectedBackPanelGlass = null;
+        let selectedExtraBackPanel = null;
+        let selectedMirror = null;
+        let selectedPasspartout = null;
+        let selectedExtraService = null;
+        let selectedBackBoardType = null;
+        let selectedArtwork = null;
+        let selectedStretching = null;
+        let selectedPrinting = null;
 
         const form = document.getElementsByClassName('needs-validation')[0];
 
         // Get a reference to the input element and the span element
-        const frameSelect = document.getElementById('frame-select');
-        const frameUnitPrice = document.getElementById('frame-unit-price');
-        const frameUnit = document.getElementById('frame-unit');
+        const frameUnitPriceLabel = document.getElementById('frame-unit-price');
+        const frameUnitLabel = document.getElementById('frame-unit');
 
+        const secondFrameUnitPriceLabel = document.getElementById('second-frame-unit-price');
+        const secondFrameUnitLabel = document.getElementById('second-frame-unit');
+
+        // select elements
+        const frameSelect = document.getElementById('frame-select');
         const secondFrameSelect = document.getElementById('second-frame-select');
-        const secondFrameUnitPrice = document.getElementById('second-frame-unit-price');
-        const secondFrameUnit = document.getElementById('second-frame-unit');
+        const discountSelect = document.getElementById('discount-select');
+        const outerMeasureSelect = document.getElementById('outer-measure-select');
+        const blackGlassSelect = document.getElementById('back-panel-select');
+        const extraBackPanelsSelect = document.getElementById('extra-back-frame-select');
+        const passpartoutSelect = document.getElementById('passpartout-select');
+        const mirrorSelect = document.getElementById('mirror-select');
+        const extraServicesSelect = document.getElementById('extra-service-select');
+        const backBoardTypeSelect = document.getElementById('back-board-type-select');
+        const printingSelect = document.getElementById('printing-select');
+        const artworkSelect = document.getElementById('artwork-select');
+        const stretchingSelect = document.getElementById('stretching-select');
+
+        // input elements
+        const heightInput = document.getElementById('height-input');
+        const widthInput = document.getElementById('width-input');
+        const backBoardLengthInput = document.getElementById('back-board-length-input');
+
+        // summary labels
+        const netPriceLabel = document.getElementById('net-price-label');
+        const discountLabel = document.getElementById('discount-label');
+        const afterDiscountLabel = document.getElementById('after-discount-label');
+        const vatLabel = document.getElementById('vat-label');
+        const totalWithVatLabel = document.getElementById('total-with-vat-label');
+
+        // cost breakdown labels
+        const summaryFramePriceLabelabel = document.getElementById('frame-price-label');
+        const summaryRebatePriceLabel = document.getElementById('rebate-price-label');
+        const summaryPasspartoutPriceLabel = document.getElementById('passpartout-price-label');
+        const summaryBackPanelGlassPriceLabel = document.getElementById('back-glass-price-label');
+        const summaryMirrorPriceLabel = document.getElementById('mirror-price-label');
+        const summaryLaborPriceLabel = document.getElementById('labor-price-label');
+        const summaryStretchingPriceLabel = document.getElementById('stretching-price-label');
+        const summaryPrintingPriceLabel = document.getElementById('printing-price-label');
+        const summaryArtworksPriceLabel = document.getElementById('artworks-price-label');
+
+        const clearButton = document.getElementById('clear-button');
 
         //const secondFrameInput = document.getElementById('second-frame-input');
         //const netPriceLabel = document.getElementById('net-price-label');
 
         // Function to calculate the square of a number and update the span
-        function calculateAndDisplaySquare() {
-            // Get the value from the input field
-            const inputValue = frameInput.value;
+        function calculateAndSetValues() {
+            //calculateAndDisplaySquare();
+            const frameUnit = calculateFrameUnit();
+            const secondFrameUnit = calculateSecondFrameUnit();
 
-            if (!form.checkValidity()) {
-                form.classList.add('was-validated');
-                return;
-            }
+            // cost breakdown
+            summaryFramePriceLabelabel.textContent = formatNumber(calculateFramePrice());
+            summaryRebatePriceLabel.textContent = formatNumber(calculateSecondFramePrice());
+            summaryBackPanelGlassPriceLabel.textContent = formatNumber(calculateBackPanelGlassPrice());
+            summaryPasspartoutPriceLabel.textContent = formatNumber(calculatePasspartoutPrice());
+            summaryLaborPriceLabel.textContent = formatNumber(calculateLaborPrice());
+            summaryMirrorPriceLabel.textContent = formatNumber(calculateMirrorPrice());
+            summaryStretchingPriceLabel.textContent = formatNumber(calculateStretchingPrice());
+            summaryPrintingPriceLabel.textContent = formatNumber(calculatePrintingPrice());
+            summaryArtworksPriceLabel.textContent = formatNumber(calculateArtworkPrice());
 
-            if (!isNumber(frameInput)) {
-                //alert('Please enter a valid number');
-                return;
-            }
+            // totals
+            netPriceLabel.textContent = formatNumber(calculateNetPrice(false)); // price before discount and vat
+            discountLabel.textContent = discountSelect.options[discountSelect.selectedIndex].text.replace('%', ''); // discount rate
 
-            // Check if the input is a valid number
-            if (inputValue !== '' && !isNaN(inputValue)) {
-                // Convert the input value to a number
-                const number = parseFloat(inputValue);
+            let priceWithoutVat = calculateNetPrice();
+            afterDiscountLabel.textContent = formatNumber(priceWithoutVat); // price after discount but before vat
 
-                // Calculate the square
-                const square = number * number;
+            let priceWithVat = priceWithoutVat * vatRate;
+            totalWithVatLabel.textContent = formatNumber(priceWithVat); // total price with vat
 
-                // Display the result in the span element
-                netPriceLabel.textContent = square;
-            } else {
-                // If the input is not a number, clear the span
-                netPriceLabel.textContent = '0';
-            }
+            vatLabel.textContent = formatNumber(priceWithVat - priceWithoutVat); // vat amount
+
+            // set values
+            frameUnitLabel.textContent = frameUnit;
+            secondFrameUnitLabel.textContent = secondFrameUnit;
         }
 
-        // Attach the 'oninput' event listener to the input field
-        // This runs the function every time the user types
-        //frameInput.addEventListener('input', calculateAndDisplaySquare);
-
         form.addEventListener('input', (event) => {
-            //calculateAndDisplaySquare();
-            calculateFrameUnit();
-            calculateSecondFrameUnit();
+            calculateAndSetValues();
+        });
+
+        discountSelect.addEventListener('input', (event) => {
+            calculateAndSetValues();
         });
 
         frameSelect.addEventListener('input', (event) => {
             findRowInData(
                 framePricesData,
                 0, event.target.value).then((data) => {
-                    selectedFrameData = data;
-                    frameUnitPrice.textContent = getFrameUnitPrice(priceSource);
-                    //x" calculateFrameUnit();
+                    selectedFrame = data;
+                    frameUnitPriceLabel.textContent = getFrameUnitPrice(priceSource);
                 });
         });
 
@@ -522,14 +568,102 @@
             findRowInData(
                 framePricesData,
                 0, event.target.value).then((data) => {
-                    selectedSecondFrameData = data;
-                    secondFrameUnitPrice.textContent = getFrameUnitPrice(priceSource, true); // true means second frame
-                    //calculateSecondFrameUnit();
-                    //calculateFrameUnit();
+                    selectedSecondFrame = data;
+                    secondFrameUnitPriceLabel.textContent = getFrameUnitPrice(priceSource, true); // true means second frame
                 });
         });
 
+        blackGlassSelect.addEventListener('input', (event) => {
+            findRowInData(
+                backPanelGlasses,
+                0, event.target.value).then((data) => {
+                    selectedBackPanelGlass = data;
+                });
+        });
+
+        extraBackPanelsSelect.addEventListener('input', (event) => {
+            findRowInData(
+                extraBackPanels,
+                0, event.target.value).then((data) => {
+                    selectedExtraBackPanel = data;
+                });
+        });
+
+        mirrorSelect.addEventListener('input', (event) => {
+            findRowInData(
+                mirrors,
+                0, event.target.value).then((data) => {
+                    selectedMirror = data;
+                });
+        });
+
+        passpartoutSelect.addEventListener('input', (event) => {
+            findRowInData(
+                passpartouts,
+                0, event.target.value).then((data) => {
+                    selectedPasspartout = data;
+                });
+        });
+
+        extraServicesSelect.addEventListener('input', (event) => {
+            findRowInData(
+                extraServices,
+                0, event.target.value).then((data) => {
+                    selectedExtraService = data;
+                });
+        });
+
+        backBoardTypeSelect.addEventListener('input', (event) => {
+            findRowInData(
+                backBoardTypes,
+                0, event.target.value).then((data) => {
+                    selectedBackBoardType = data;
+                });
+        });
+
+        artworkSelect.addEventListener('input', (event) => {
+            findRowInData(
+                artworkPrices,
+                0, event.target.value).then((data) => {
+                    selectedArtwork = data;
+                });
+        });
+
+        stretchingSelect.addEventListener('input', (event) => {
+            findRowInData(
+                stretchings,
+                0, event.target.value).then((data) => {
+                    selectedStretching = data;
+                });
+        });
+
+        clearButton.addEventListener('click', (event) => {
+            form.reset();
+            // reset all selected items
+            selectedFrame = null;
+            selectedSecondFrame = null;
+            selectedBackPanelGlass = null;
+            selectedExtraBackPanel = null;
+            selectedMirror = null;
+            selectedPasspartout = null;
+            selectedExtraService = null;
+            selectedBackBoardType = null;
+            selectedArtwork = null;
+            selectedStretching = null;
+            discountSelect.selectedIndex = 0;
+
+            // clear labels
+            frameUnitPriceLabel.textContent = '';
+            frameUnitLabel.textContent = '';
+            secondFrameUnitPriceLabel.textContent = '';
+            secondFrameUnitLabel.textContent = '';
+
+            calculateAndSetValues();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
+
+            intiParams();
 
             // fetch the frame prices data and populate the select elements
             getAllRowsFromCsv('data-files/frame-prices.csv', ';').then((data) => {
@@ -560,10 +694,10 @@
 
             // fetch extra back frames and populate the select element
             getAllRowsFromCsv('data-files/extra-back-frames.csv', ';').then((data) => {
-                extraBackFrames = data;
+                extraBackPanels = data;
 
                 populateSelectFromData(
-                    extraBackFrames,
+                    extraBackPanels,
                     document.getElementById('extra-back-frame-select'),
                     "OXI", 0, 0, ';'
                 );
@@ -580,13 +714,13 @@
                 );
             });
 
-            // fetch paspartouts and populate the select element
-            getAllRowsFromCsv('data-files/passepartouts.csv', ';').then((data) => {
-                paspartouts = data;
+            // fetch passpartouts and populate the select element
+            getAllRowsFromCsv('data-files/passpartouts.csv', ';').then((data) => {
+                passpartouts = data;
 
                 populateSelectFromData(
-                    paspartouts,
-                    document.getElementById('passepartout-select'),
+                    passpartouts,
+                    document.getElementById('passpartout-select'),
                     "OXI", 0, 0, ';'
                 );
             });
@@ -602,12 +736,12 @@
                 );
             });
 
-            // fetch backing board types and populate the select element
-            getAllRowsFromCsv('data-files/backing-board-types.csv', ';').then((data) => {
-                backingBoardTypes = data;
+            // fetch back board types and populate the select element
+            getAllRowsFromCsv('data-files/back-board-types.csv', ';').then((data) => {
+                backBoardTypes = data;
 
                 populateSelectFromData(
-                    backingBoardTypes,
+                    backBoardTypes,
                     document.getElementById('back-board-type-select'),
                     "OXI", 0, 0, ';'
                 );
@@ -624,13 +758,13 @@
                 );
             });
 
-            // fetch stretchens and populate the select element
-            getAllRowsFromCsv('data-files/stretchens.csv', ';').then((data) => {
-                strecthes = data;
+            // fetch stretchings and populate the select element
+            getAllRowsFromCsv('data-files/stretchings.csv', ';').then((data) => {
+                stretchings = data;
 
                 populateSelectFromData(
-                    strecthes,
-                    document.getElementById('strecthen-select'),
+                    stretchings,
+                    document.getElementById('stretching-select'),
                     "OXI", 0, 0, ';'
                 );
             });

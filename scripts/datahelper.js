@@ -4,7 +4,6 @@ async function populateSelectFromData(data, selectControl, defaultOptionText = "
         const defaultOption = document.createElement('option');
         defaultOption.value = "";
         defaultOption.textContent = defaultOptionText;
-        defaultOption.disabled = true;
         defaultOption.selected = true;
         selectControl.appendChild(defaultOption);
 
@@ -131,3 +130,4 @@ async function getAllRowsFromCsv(csvUrl, splitChar = ',') {
         return null;
     }
 }
+
