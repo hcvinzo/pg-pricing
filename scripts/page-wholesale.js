@@ -398,3 +398,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function calculateNetPrice(withDiscount = true) {
+    return calculateFramePrice(withDiscount) +
+        calculateSecondFramePrice(withDiscount) +
+        calculateBackPanelGlassPrice(withDiscount) +
+        calculatePasspartoutPrice(withDiscount) +
+        calculateLaborPrice(withDiscount) +
+        calculateMirrorPrice(withDiscount) +
+        calculateStretchingPrice(withDiscount) +
+        calculatePrintingPrice(withDiscount) +
+        calculateArtworkPrice(withDiscount);
+}
