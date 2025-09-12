@@ -397,13 +397,13 @@ document.addEventListener('DOMContentLoaded', () => {
         frameUnitLabel.textContent = formatNumber(frameUnit);
         secondFrameUnitLabel.textContent = formatNumber(secondFrameUnit);
 
-        mirrorSquaremeterLabel.value = formatNumber(calculateSquareMeter());
-        backGlassSquaremeterPanel.value = formatNumber(calculateSquareMeter());
+        mirrorSquaremeterLabel.textContent = formatNumber(calculateSquareMeter());
+        backGlassSquaremeterPanel.textContent = formatNumber(calculateSquareMeter());
 
         if (printingSelect.value && (printingSelect.value == "2" || printingSelect.value == "3")) {
-            printingSquaremeterLabel.value = formatNumber(calculateSquareMeter(8));
+            printingSquaremeterLabel.textContent = formatNumber(calculateSquareMeter(8));
         } else
-            printingSquaremeterLabel.value = formatNumber(calculateSquareMeter());
+            printingSquaremeterLabel.textContent = formatNumber(calculateSquareMeter());
     }
 });
 

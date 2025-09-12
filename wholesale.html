@@ -147,21 +147,12 @@
                                 <!-- Back Panel (Glass) -->
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="back-panel-select">ΤΖΑΜΙ-ΠΛΑΤΗ</label>
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <select class="form-select" id="back-panel-select"></select>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="input-group">
-                                                <input type="number" class="form-control"
-                                                    id="back-glass-squaremeter-label" value="0" readonly>
-                                                <span class="input-group-text">m<sup>2</sup></span>
-                                            </div>
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Please select
-                                        </div>
-                                    </div>
+                                    <select class="form-select" id="back-panel-select"></select>
+                                    <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                        <span id="back-glass-squaremeter-label">0.00</span></small>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please select
                                 </div>
                             </div>
 
@@ -179,19 +170,10 @@
                                 <!-- Mirror -->
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="mirror-select">ΚΑΘΡΕΠΤΗΣ</label>
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <select class="form-select" id="mirror-select">
-                                            </select>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="mirror-squaremeter-label"
-                                                    value="0" readonly>
-                                                <span class="input-group-text">m<sup>2</sup></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <select class="form-select" id="mirror-select">
+                                    </select>
+                                    <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                        <span id="mirror-squaremeter-label">0.00</span></small>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
@@ -259,25 +241,16 @@
                                 <!-- Printing -->
                                 <div class="col-md-6 g-3">
                                     <label class="form-label" for="printing-select">ΕΚΤΥΠΩΣΗ</label>
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <select class="form-select" id="printing-select">
-                                                <option selected value>OXI</option>
-                                                <option value="1">ΧΑΡΤΙ</option>
-                                                <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
-                                                <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="input-group">
-                                                <input type="number" class="form-control"
-                                                    id="printing-squaremeter-label" value="0" readonly>
-                                                <span class="input-group-text">m<sup>2</sup></span>
-                                            </div>
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Please select
-                                        </div>
+                                    <select class="form-select" id="printing-select">
+                                        <option selected value>OXI</option>
+                                        <option value="1">ΧΑΡΤΙ</option>
+                                        <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
+                                        <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
+                                    </select>
+                                    <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                        <span id="printing-squaremeter-label">0.00</span></small>
+                                    <div class="invalid-feedback">
+                                        Please select
                                     </div>
                                 </div>
 
