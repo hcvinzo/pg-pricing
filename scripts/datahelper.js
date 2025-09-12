@@ -26,7 +26,7 @@ async function populateSelectFromData(data, selectControl, defaultOptionText = "
             }
         });
     } catch (error) {
-        console.error('Veri yüklenirken bir hata oluştu:', error);
+        console.error('An error occured while fill select data - ' + selectControl.getAttribute("data-id"), error);
     }
 }
 
@@ -36,7 +36,7 @@ async function populateSelectFromCsv(csvFileUrl, selectControl, defaultOptionTex
         // 1. Fetch ile dosyayı çek
         fetch(csvFileUrl).then(res => {
             if (res.status === 404) {
-                throw new Error('Dosya bulunamadı (404)');
+                throw new Error('File not found (404)');
             }
             return res.text();
         }).then(csvText => {
@@ -46,11 +46,11 @@ async function populateSelectFromCsv(csvFileUrl, selectControl, defaultOptionTex
             return populateSelectFromData(rows, selectControl, defaultOptionText, valueFieldIndex, textFieldIndex, splitChar);
 
         }).catch(err => {
-            throw new Error('Dosya yüklenirken bir hata oluştu: ' + err.message);
+            throw new Error('An error occured while reading file : ' + err.message);
         });
 
     } catch (error) {
-        console.error('Veri yüklenirken bir hata oluştu:', error);
+        console.error('An error occured while fill select data - ' + csvFileUrl, error);
     }
 }
 

@@ -3,71 +3,28 @@ body {
     overflow: hidden;
 }
 
-/* Sidebar sadece md ve üstü ekranlarda görünsün */
-.sidebar {
-    width: 50px;
-    transition: width 0.3s;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #f8f9fa;
-    border-right: 1px solid #dee2e6;
-    padding-top: 1rem;
-}
-
-.sidebar.expanded {
-    width: 220px;
-}
-
-.sidebar .nav-link {
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    overflow: hidden;
-    transition: all 0.3s;
-    padding: 0.75rem 1rem;
-}
-
-.sidebar .nav-link i {
-    font-size: 1.2rem;
-    margin-right: 15px;
-    transition: margin-right 0.3s;
-}
-
-.sidebar.expanded .nav-link i {
-    margin-right: 10px;
-}
-
-.sidebar .nav-link span {
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.sidebar.expanded .nav-link span {
-    opacity: 1;
-}
-
 .content {
-    margin-left: 80px;
     transition: margin-left 0.3s;
     padding: 2rem;
     height: 100vh;
     overflow-y: auto;
 }
 
-.content.expanded {
-    margin-left: 220px;
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-width: 4px;
+    border-bottom-color: #6dbdfe;
+    font-weight: 600;
 }
 
-/* Mobilde sidebar tamamen gizlensin */
-@media (max-width: 767.98px) {
-    .sidebar {
-        display: none;
-    }
-
-    .content,
-    .content.expanded {
-        margin-left: 0;
-    }
+.nav {
+    --bs-nav-link-color: #000000;
+    --bs-nav-tabs-link-active-bg: none;
+    --bs-nav-link-hover-color: none;
+    --bs-nav-tabs-border-radius: 0;
+    --bs-nav-tabs-border-width: 0px;
+    border-bottom: 1px gray solid
 }

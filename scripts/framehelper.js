@@ -168,7 +168,6 @@ function calculateFrameUnit() {
     const frameUnit = getFrameUnit();
     const secondFrameUnit = getFrameUnit(true);
     return ((((height + width) * 2) + frameUnit + secondFrameUnit) / 100) - calculateOuterMeasure();
-
 };
 
 function calculateSecondFrameUnit() {
