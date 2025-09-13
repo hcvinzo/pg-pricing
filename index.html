@@ -17,9 +17,9 @@
     <!-- Content -->
     <div class="content">
 
-        <div class="d-flex flex-row">
+        <div class="d-flex flex-sm-row flex-column">
             <div class="me-3" style="width:120px"><img src="assets/logo.png" width="120px"></div>
-            <div class="mb-3 flex-fill">
+            <div class="mb-3  flex-grow-1">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="wholesale-tab" data-bs-toggle="tab"
@@ -1576,6 +1576,7 @@
 
                     // If it's a mobile device, exit the function.
                     if (isMobile) {
+                        alert("kk");
                         $('#' + tableId).bootstrapTable('resetView');
                         return;
                     }
