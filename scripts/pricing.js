@@ -66,8 +66,14 @@ class tabManager {
         if (this.priceSource != "stampless") {
             this.elements.backBoardLengthInput = this.tabElement.querySelector('[data-id="back-board-length-input"]');
             this.elements.mirrorSquaremeterLabel = this.tabElement.querySelector('[data-id="mirror-squaremeter-label"]');
+            this.elements.mirrorPriceLabel = this.tabElement.querySelector('[data-id="mirror-price-label"]');
             this.elements.printingSquaremeterLabel = this.tabElement.querySelector('[data-id="printing-squaremeter-label"]');
             this.elements.backGlassSquaremeterPanel = this.tabElement.querySelector('[data-id="back-glass-squaremeter-label"]');
+            this.elements.backGlassPricePanel = this.tabElement.querySelector('[data-id="back-glass-sqprice-label"]');
+            this.elements.mirrorPricePanel = this.tabElement.querySelector('[data-id="mirror-sqprice-label"]');
+            this.elements.extraServiceSqPricePanel = this.tabElement.querySelector('[data-id="extra-service-sqprice-label"]');
+            this.elements.stretchingSqPricePanel = this.tabElement.querySelector('[data-id="stretching-sqprice-label"]');
+            this.elements.printingSqPricePanel = this.tabElement.querySelector('[data-id="printing-sqprice-label"]');
         }
 
         // summary labels
@@ -321,6 +327,11 @@ class tabManager {
         if (this.priceSource != "stampless") {
             this.elements.mirrorSquaremeterLabel.textContent = formatNumber(this.calculateSquareMeter());
             this.elements.backGlassSquaremeterPanel.textContent = formatNumber(this.calculateSquareMeter());
+            this.elements.backGlassPricePanel.textContent = formatNumber(this.getBackPanelGlassOuterSquareMeter());
+            this.elements.mirrorPricePanel.textContent = formatNumber(this.getMirrorUnitPrice());
+            this.elements.extraServiceSqPricePanel.textContent = formatNumber(this.getExtraWorkUnitPrice());
+            this.elements.stretchingSqPricePanel.textContent = formatNumber(this.getStretchingUnitPrice());
+            this.elements.printingSqPricePanel.textContent = formatNumber(this.getPrintingUnitPrice());
 
             if (this.elements.printingSelect.value && (this.elements.printingSelect.value == "2" || this.elements.printingSelect.value == "3")) {
                 this.elements.printingSquaremeterLabel.textContent = formatNumber(this.calculateSquareMeter(8));
@@ -464,6 +475,54 @@ class tabManager {
             return null;
         }
     }
+
+    getPrintingUnitPrice() {
+        const selectedPrinting = getSelectValueAsNumber(this.elements.printingSelect);
+
+        const squareMeter = this.calculateSquareMeter();
+        const squareMeterAdditional = this.calculateSquareMeter(8);
+        let price = 0;
+
+        if (selectedPrinting === 1) {
+            if (squareMeter >= 0.75) {
+                price = 27;
+            } else if (squareMeter >= 0.5) {
+                price = 30;
+            } else if (squareMeter >= 0.25) {
+                price = 33;
+            } else if (squareMeter >= 0.1) {
+                price = 36;
+            } else if (squareMeter >= 0.00001) {
+                price = 40;
+            }
+        } else if (selectedPrinting === 2) {
+            if (squareMeterAdditional >= 0.75) {
+                price = 30;
+            } else if (squareMeterAdditional >= 0.5) {
+                price = 33;
+            } else if (squareMeterAdditional >= 0.25) {
+                price = 36;
+            } else if (squareMeterAdditional >= 0.1) {
+                price = 40;
+            } else if (squareMeterAdditional >= 0.00001) {
+                price = 44;
+            }
+        } else if (selectedPrinting === 3) {
+            if (squareMeterAdditional >= 0.75) {
+                price = 48;
+            } else if (squareMeterAdditional >= 0.5) {
+                price = 53;
+            } else if (squareMeterAdditional >= 0.25) {
+                price = 58;
+            } else if (squareMeter >= 0.1) {
+                price = 64;
+            } else if (squareMeterAdditional >= 0.00001) {
+                price = 70;
+            }
+        }
+        return price;
+    }
+
 
     getDiscount(withDiscount = true) {
         return (withDiscount ? getSelectValueAsNumber(this.elements.discountSelect) : 1);
