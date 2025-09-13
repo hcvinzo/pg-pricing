@@ -385,7 +385,7 @@
 
                                 <!-- labor price -->
                                 <div class="row">
-                                    <div class="col-7">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
+                                    <div class="col-7">ΕΡΓΑΣΙΕΣ:</div>
                                     <div class="col-5 text-end">
                                         <span class="text-muted" data-id="labor-price-label">0</span>
                                         <span>€</span>
@@ -964,7 +964,7 @@
 
                                 <!-- labor price -->
                                 <div class="row">
-                                    <div class="col-7">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
+                                    <div class="col-7">ΕΡΓΑΣΙΕΣ:</div>
                                     <div class="col-5 text-end">
                                         <span class="text-muted" data-id="labor-price-label">0</span>
                                         <span>€</span>
@@ -1353,7 +1353,7 @@
 
                                 <!-- labor price -->
                                 <div class="row">
-                                    <div class="col-7">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
+                                    <div class="col-7">ΕΡΓΑΣΙΕΣ:</div>
                                     <div class="col-5 text-end">
                                         <span class="text-muted" data-id="labor-price-label">0</span>
                                         <span>€</span>
@@ -1425,8 +1425,8 @@
             <div class="tab-pane fade" id="tab-posters" role="tabpanel" aria-labelledby="posters-tab">
                 <h3>ΑΦΙΣΕΣ</h3>
                 <table data-search="true" data-show-refresh="true" data-show-columns="true"
-                    data-show-columns-toggle-all="true" data-pagination="true" data-page-size="50"
-                    data-page-list="[50, 75, 100, 250, all]" data-fixed-scroll="true" data-height="460"
+                    data-show-columns-toggle-all="true" data-pagination="true" data-page-size="25"
+                    data-page-list="[25, 50, 100, 250, all]" data-fixed-scroll="true" data-height="460"
                     data-pagination-parts="pageList, pageSize" data-toolbar="#toolbar" data-loading-template="fa"
                     data-sort-name="ΡΑΦΙ" data-sort-order="asc" id="table-posters">
                     <thead>
@@ -1454,14 +1454,14 @@
                 </div>
 
                 <table data-search="true" id="table-frames" data-show-refresh="true" data-show-columns="true"
-                    data-show-columns-toggle-all="true" data-pagination="true" data-page-size="50"
-                    data-page-list="[50, 75, 100, 250, all]" data-fixed-scroll="true" data-height="460"
+                    data-show-columns-toggle-all="true" data-pagination="true" data-page-size="25"
+                    data-page-list="[25, 50, 100, 250, all]" data-fixed-scroll="true"
                     data-pagination-parts="pageList, pageSize" data-toolbar="#frames-toolbar" data-loading-template="fa"
                     data-sortable="true" data-sort-name="reference" data-sort-order="asc">
                     <thead>
                         <tr>
                             <th data-field="image_url" data-width="140px" data-align="center"
-                                data-formatter="imageFormatter">
+                                data-formatter="imageFormatter1">
                                 Url</th>
                             <th data-field="reference">Κωδικός</th>
                             <th data-field="quantity">Ποσότητα</th>
@@ -1486,8 +1486,8 @@
                 </div>
 
                 <table data-search="true" id="table-artworks" data-show-refresh="true" data-show-columns="true"
-                    data-show-columns-toggle-all="true" data-pagination="true" data-page-size="50"
-                    data-page-list="[50, 75, 100, 250, all]" data-fixed-scroll="true" data-height="460"
+                    data-show-columns-toggle-all="true" data-pagination="true" data-page-size="25"
+                    data-page-list="[25, 50, 100, 250, all]" data-fixed-scroll="true" data-height="460"
                     data-pagination-parts="pageList, pageSize" data-toolbar="#artworks-toolbar"
                     data-loading-template="fa" data-sortable="true" data-sort-name="legend" data-sort-order="asc">
                     <thead>
@@ -1540,6 +1540,14 @@
             return `<img src="${row.image_url}" 
                alt="thumb" 
                style="height:40px; cursor:pointer;" 
+               onclick="showImage('${row.image_url}')">`;
+        }
+
+        function imageFormatter1(value, row, index) {
+            // Show a small clickable thumbnail
+            return `<img src="${row.image_url}" 
+               alt="thumb" 
+               style="height:60px; cursor:pointer;" 
                onclick="showImage('${row.image_url}')">`;
         }
 

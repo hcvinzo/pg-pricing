@@ -171,7 +171,7 @@ class tabManager {
                 this.datas["frame_prices"],
                 0, event.target.value).then((data) => {
                     this.states.selectedFrame = data;
-                    this.elements.frameUnitPriceLabel.textContent = formatNumber(this.getFrameUnitPrice(this.priceSource));
+                    this.elements.frameUnitPriceLabel.textContent = formatNumber(this.getFrameUnitPrice());
                 });
 
             findRowInData(
@@ -186,7 +186,7 @@ class tabManager {
                 this.datas["frame_prices"],
                 0, event.target.value).then((data) => {
                     this.states.selectedSecondFrame = data;
-                    this.elements.secondFrameUnitPriceLabel.textContent = formatNumber(this.getFrameUnitPrice(this.priceSource, true)); // true means second frame
+                    this.elements.secondFrameUnitPriceLabel.textContent = formatNumber(this.getFrameUnitPrice(true)); // true means second frame
                 });
 
             findRowInData(
