@@ -1576,7 +1576,7 @@
                     const tableId = "table-" + activeTabId;
                     const windowHeight = window.innerHeight;
                     const offsetTop = document.getElementById(tableId).getBoundingClientRect().top;
-                    const tableHeight = windowHeight - offsetTop - 20; // 20px margin
+                    const tableHeight = windowHeight - offsetTop + 15; // 20px margin
                     $('#' + tableId).bootstrapTable('resetView', { height: tableHeight });
                 }
             }
