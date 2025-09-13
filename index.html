@@ -1577,14 +1577,15 @@
                     // If it's a mobile device, exit the function.
                     if (isMobile) {
                         alert("kk");
-                        $('#' + tableId).bootstrapTable('resetView');
+                        //$('#' + tableId).bootstrapTable('resetView');
                         return;
                     }
-
-                    const windowHeight = document.documentElement.clientHeight;
-                    const offsetTop = document.getElementById(tableId).getBoundingClientRect().top;
-                    const tableHeight = windowHeight - offsetTop + 15; // 15 added to decrease bottom offset.
-                    $('#' + tableId).bootstrapTable('resetView', { height: tableHeight });
+                    else {
+                        const windowHeight = document.documentElement.clientHeight;
+                        const offsetTop = document.getElementById(tableId).getBoundingClientRect().top;
+                        const tableHeight = windowHeight - offsetTop + 15; // 15 added to decrease bottom offset.
+                        $('#' + tableId).bootstrapTable('resetView', { height: tableHeight });
+                    }
                 }
             }
 
