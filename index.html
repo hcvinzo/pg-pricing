@@ -17,45 +17,51 @@
     <!-- Content -->
     <div class="content">
 
-        <div class="mb-3">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="wholesale-tab" data-bs-toggle="tab" data-bs-target="#tab-wholesale"
-                        href="#wholesale" role="tab" aria-controls="wholesale" aria-selected="true"><i
-                            class="bi bi-box"></i>
-                        ΧΟΝΔΡΙΚΗ</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="stampless-tab" data-bs-toggle="tab" data-bs-target="#tab-stampless"
-                        href="#stampless" role="tab" aria-controls="stampless" aria-selected="false"><i
-                            class="bi bi-file"></i> ΑΚΑΡΦΩΤΗ</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="wholesaleplus-tab" data-bs-toggle="tab" data-bs-target="#tab-wholesaleplus"
-                        href="#wholesaleplus" role="tab" aria-controls="wholesaleplus" aria-selected="false"><i
-                            class="bi bi-box-seam"></i> ΧΟΝΔΡΙΚΗ+</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="retail-tab" data-bs-toggle="tab" data-bs-target="#tab-retail" href="#retail"
-                        role="tab" aria-controls="retail" aria-selected="false"><i class="bi bi-file-earmark-easel"></i>
-                        ΛΙΑΝΙΚΗ</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="posters-tab" data-bs-toggle="tab" data-bs-target="#tab-posters"
-                        href="#posters" role="tab" aria-controls="posters" aria-selected="false"><i
-                            class="bi bi-image"></i> ΑΦΙΣΕΣ</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="frames-tab" data-bs-toggle="tab" data-bs-target="#tab-frames" href="#frames"
-                        role="tab" aria-controls="frames" aria-selected="false"><i class="bi bi-border-outer"></i>
-                        ΚΟΡΝΙΖΕΣ</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="artworks-tab" data-bs-toggle="tab" data-bs-target="#tab-artworks"
-                        href="#artworks" role="tab" aria-controls="artworks" aria-selected="false"><i
-                            class="bi bi-palette"></i> Artworks</a>
-                </li>
-            </ul>
+        <div class="d-flex flex-row">
+            <div class="me-3" style="width:120px"><img src="assets/logo.png" width="120px"></div>
+            <div class="mb-3 flex-fill">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="wholesale-tab" data-bs-toggle="tab"
+                            data-bs-target="#tab-wholesale" href="#wholesale" role="tab" aria-controls="wholesale"
+                            aria-selected="true"><i class="bi bi-box"></i>
+                            ΧΟΝΔΡΙΚΗ</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="stampless-tab" data-bs-toggle="tab" data-bs-target="#tab-stampless"
+                            href="#stampless" role="tab" aria-controls="stampless" aria-selected="false"><i
+                                class="bi bi-file"></i> ΑΚΑΡΦΩΤΗ</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="wholesaleplus-tab" data-bs-toggle="tab"
+                            data-bs-target="#tab-wholesaleplus" href="#wholesaleplus" role="tab"
+                            aria-controls="wholesaleplus" aria-selected="false"><i class="bi bi-box-seam"></i>
+                            ΧΟΝΔΡΙΚΗ+</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="retail-tab" data-bs-toggle="tab" data-bs-target="#tab-retail"
+                            href="#retail" role="tab" aria-controls="retail" aria-selected="false"><i
+                                class="bi bi-file-earmark-easel"></i>
+                            ΛΙΑΝΙΚΗ</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="posters-tab" data-bs-toggle="tab" data-bs-target="#tab-posters"
+                            href="#posters" role="tab" aria-controls="posters" aria-selected="false"><i
+                                class="bi bi-image"></i> ΑΦΙΣΕΣ</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="frames-tab" data-bs-toggle="tab" data-bs-target="#tab-frames"
+                            href="#frames" role="tab" aria-controls="frames" aria-selected="false"><i
+                                class="bi bi-border-outer"></i>
+                            ΚΟΡΝΙΖΕΣ</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="artworks-tab" data-bs-toggle="tab" data-bs-target="#tab-artworks"
+                            href="#artworks" role="tab" aria-controls="artworks" aria-selected="false"><i
+                                class="bi bi-palette"></i> Artworks</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="tab-content" id="myTabContent">
@@ -77,9 +83,9 @@
                                             <select class="form-select" data-id="frame-select">
                                             </select>
                                             <div class="d-flex flex-row gap-5">
-                                                <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                        data-id="frame-unit-price"></span>€</small>
-                                                <small><span class="fw-semibold">Μέτρο : </span><span
+                                                <small><span class="fw-semibold">Τιμή / m: </span><span
+                                                        data-id="frame-unit-price"></span> €</small>
+                                                <small><span class="fw-semibold">Μέτρa: </span><span
                                                         data-id="frame-unit"></span>m</small>
                                             </div>
                                             <div class="invalid-feedback">
@@ -92,9 +98,9 @@
                                             <select class="form-select" data-id="second-frame-select">
                                             </select>
                                             <div class="d-flex flex-row gap-5">
-                                                <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                        data-id="second-frame-unit-price"></span>€</small>
-                                                <small><span class="fw-semibold">Μέτρο : </span><span
+                                                <small><span class="fw-semibold">Τιμή / m: </span><span
+                                                        data-id="second-frame-unit-price"></span> €</small>
+                                                <small><span class="fw-semibold">Μέτρa: </span><span
                                                         data-id="second-frame-unit"></span>m</small>
                                             </div>
                                             <div class="invalid-feedback">
@@ -149,7 +155,7 @@
                                         <div class="col-md-6 g-3">
                                             <label class="form-label" for="back-panel-select">ΤΖΑΜΙ-ΠΛΑΤΗ</label>
                                             <select class="form-select" data-id="back-panel-select"></select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="back-glass-squaremeter-label">0.00</span></small>
                                         </div>
                                         <div class="invalid-feedback">
@@ -174,7 +180,7 @@
                                             <label class="form-label" for="mirror-select">ΚΑΘΡΕΠΤΗΣ</label>
                                             <select class="form-select" data-id="mirror-select">
                                             </select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="mirror-squaremeter-label">0.00</span></small>
                                             <div class="invalid-feedback">
                                                 Please select
@@ -250,7 +256,7 @@
                                                 <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
                                                 <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
                                             </select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="printing-squaremeter-label">0.00</span></small>
                                             <div class="invalid-feedback">
                                                 Please select
@@ -294,11 +300,10 @@
                                         <span>%</span>
                                     </div>
                                 </div>
-                                <hr>
                                 <!-- price after discount -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-8">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
+                                    <div class="col-4 text-end">
                                         <span class="text-muted" data-id="after-discount-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -312,26 +317,24 @@
                                     </div>
                                 </div>
 
-                                <hr>
                                 <!-- total with vat -->
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-8">
                                         <h6>ΣΥΝΟΛΟ ΜΕ ΦΠΑ:</h6>
                                     </div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-4 text-end">
                                         <span class="text-muted" data-id="total-with-vat-label">0</span>
                                         <span>€</span>
                                     </div>
                                 </div>
 
-                                <hr>
-
                                 <!-- cost breakdown -->
-                                <h6>Ανάλυση κόστους</h6>
+                                <h6 class="mt-4">Ανάλυση κόστους</h6>
+                                <hr>
 
                                 <!-- frame price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΚΟΡΝΙΖΑΣ:</div>
+                                    <div class="col-6">ΚΟΡΝΙΖΑ:</div>
                                     <div class="col-6 text-end">
                                         <span class="text-muted" data-id="frame-price-label">0</span>
                                         <span>€</span>
@@ -340,7 +343,7 @@
 
                                 <!-- rebate price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΠΑΤΟΥΡΑΣ:</div>
+                                    <div class="col-6">ΠΑΤΟΥΡΑ:</div>
                                     <div class="col-6 text-end">
                                         <span class="text-muted" data-id="rebate-price-label">0</span>
                                         <span>€</span>
@@ -349,8 +352,8 @@
 
                                 <!-- back glass price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΤΖΑΜΙ-ΠΛΑΤΗ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-7">ΤΖΑΜΙ-ΠΛΑΤΗ:</div>
+                                    <div class="col-5 text-end">
                                         <span class="text-muted" data-id="back-glass-price-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -367,8 +370,8 @@
 
                                 <!-- labor price -->
                                 <div class="row">
-                                    <div class="col-6">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-7">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
+                                    <div class="col-5 text-end">
                                         <span class="text-muted" data-id="labor-price-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -454,9 +457,9 @@
                                             <select class="form-select" data-id="frame-select">
                                             </select>
                                             <div class="d-flex flex-row gap-5">
-                                                <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                        data-id="frame-unit-price"></span>€</small>
-                                                <small><span class="fw-semibold">Μέτρο : </span><span
+                                                <small><span class="fw-semibold">Τιμή / m: </span><span
+                                                        data-id="frame-unit-price"></span> €</small>
+                                                <small><span class="fw-semibold">Μέτρa: </span><span
                                                         data-id="frame-unit"></span>m</small>
                                             </div>
                                             <div class="invalid-feedback">
@@ -469,9 +472,9 @@
                                             <select class="form-select" data-id="second-frame-select">
                                             </select>
                                             <div class="d-flex flex-row gap-5">
-                                                <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                        data-id="second-frame-unit-price"></span>€</small>
-                                                <small><span class="fw-semibold">Μέτρο : </span><span
+                                                <small><span class="fw-semibold">Τιμή / m: </span><span
+                                                        data-id="second-frame-unit-price"></span> €</small>
+                                                <small><span class="fw-semibold">Μέτρa: </span><span
                                                         data-id="second-frame-unit"></span>m</small>
                                             </div>
                                             <div class="invalid-feedback">
@@ -549,11 +552,10 @@
                                         <span>%</span>
                                     </div>
                                 </div>
-                                <hr>
                                 <!-- price after discount -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-8">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
+                                    <div class="col-4 text-end">
                                         <span class="text-muted" data-id="after-discount-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -567,26 +569,25 @@
                                     </div>
                                 </div>
 
-                                <hr>
                                 <!-- total with vat -->
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-8">
                                         <h6>ΣΥΝΟΛΟ ΜΕ ΦΠΑ:</h6>
                                     </div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-4 text-end">
                                         <span class="text-muted" data-id="total-with-vat-label">0</span>
                                         <span>€</span>
                                     </div>
                                 </div>
 
-                                <hr>
 
                                 <!-- cost breakdown -->
-                                <h6>Ανάλυση κόστους</h6>
+                                <h6 class="mt-4">Ανάλυση κόστους</h6>
+                                <hr>
 
                                 <!-- frame price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΚΟΡΝΙΖΑΣ:</div>
+                                    <div class="col-6">ΚΟΡΝΙΖΑ:</div>
                                     <div class="col-6 text-end">
                                         <span class="text-muted" data-id="frame-price-label">0</span>
                                         <span>€</span>
@@ -595,7 +596,7 @@
 
                                 <!-- rebate price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΠΑΤΟΥΡΑΣ:</div>
+                                    <div class="col-6">ΠΑΤΟΥΡΑ:</div>
                                     <div class="col-6 text-end">
                                         <span class="text-muted" data-id="rebate-price-label">0</span>
                                         <span>€</span>
@@ -646,9 +647,9 @@
                                             <select class="form-select" data-id="frame-select">
                                             </select>
                                             <div class="d-flex flex-row gap-5">
-                                                <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                        data-id="frame-unit-price"></span>€</small>
-                                                <small><span class="fw-semibold">Μέτρο : </span><span
+                                                <small><span class="fw-semibold">Τιμή / m: </span><span
+                                                        data-id="frame-unit-price"></span> €</small>
+                                                <small><span class="fw-semibold">Μέτρa: </span><span
                                                         data-id="frame-unit"></span>m</small>
                                             </div>
                                             <div class="invalid-feedback">
@@ -661,9 +662,9 @@
                                             <select class="form-select" data-id="second-frame-select">
                                             </select>
                                             <div class="d-flex flex-row gap-5">
-                                                <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                        data-id="second-frame-unit-price"></span>€</small>
-                                                <small><span class="fw-semibold">Μέτρο : </span><span
+                                                <small><span class="fw-semibold">Τιμή / m: </span><span
+                                                        data-id="second-frame-unit-price"></span> €</small>
+                                                <small><span class="fw-semibold">Μέτρa: </span><span
                                                         data-id="second-frame-unit"></span>m</small>
                                             </div>
                                             <div class="invalid-feedback">
@@ -718,7 +719,7 @@
                                         <div class="col-md-6 g-3">
                                             <label class="form-label" for="back-panel-select">ΤΖΑΜΙ-ΠΛΑΤΗ</label>
                                             <select class="form-select" data-id="back-panel-select"></select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="back-glass-squaremeter-label">0.00</span></small>
                                         </div>
                                         <div class="invalid-feedback">
@@ -743,7 +744,7 @@
                                             <label class="form-label" for="mirror-select">ΚΑΘΡΕΠΤΗΣ</label>
                                             <select class="form-select" data-id="mirror-select">
                                             </select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="mirror-squaremeter-label">0.00</span></small>
                                             <div class="invalid-feedback">
                                                 Please select
@@ -819,7 +820,7 @@
                                                 <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
                                                 <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
                                             </select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="printing-squaremeter-label">0.00</span></small>
                                             <div class="invalid-feedback">
                                                 Please select
@@ -863,11 +864,10 @@
                                         <span>%</span>
                                     </div>
                                 </div>
-                                <hr>
                                 <!-- price after discount -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-8">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
+                                    <div class="col-4 text-end">
                                         <span class="text-muted" data-id="after-discount-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -881,26 +881,24 @@
                                     </div>
                                 </div>
 
-                                <hr>
                                 <!-- total with vat -->
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-8">
                                         <h6>ΣΥΝΟΛΟ ΜΕ ΦΠΑ:</h6>
                                     </div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-4 text-end">
                                         <span class="text-muted" data-id="total-with-vat-label">0</span>
                                         <span>€</span>
                                     </div>
                                 </div>
 
-                                <hr>
-
                                 <!-- cost breakdown -->
-                                <h6>Ανάλυση κόστους</h6>
+                                <h6 class="mt-4">Ανάλυση κόστους</h6>
+                                <hr>
 
                                 <!-- frame price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΚΟΡΝΙΖΑΣ:</div>
+                                    <div class="col-6">ΚΟΡΝΙΖΑ:</div>
                                     <div class="col-6 text-end">
                                         <span class="text-muted" data-id="frame-price-label">0</span>
                                         <span>€</span>
@@ -909,7 +907,7 @@
 
                                 <!-- rebate price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΠΑΤΟΥΡΑΣ:</div>
+                                    <div class="col-6">ΠΑΤΟΥΡΑ:</div>
                                     <div class="col-6 text-end">
                                         <span class="text-muted" data-id="rebate-price-label">0</span>
                                         <span>€</span>
@@ -918,8 +916,8 @@
 
                                 <!-- back glass price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΤΖΑΜΙ-ΠΛΑΤΗ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-7">ΤΖΑΜΙ-ΠΛΑΤΗ:</div>
+                                    <div class="col-5 text-end">
                                         <span class="text-muted" data-id="back-glass-price-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -936,8 +934,8 @@
 
                                 <!-- labor price -->
                                 <div class="row">
-                                    <div class="col-6">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-7">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
+                                    <div class="col-5 text-end">
                                         <span class="text-muted" data-id="labor-price-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -1023,9 +1021,9 @@
                                             <select class="form-select" data-id="frame-select">
                                             </select>
                                             <div class="d-flex flex-row gap-5">
-                                                <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                        data-id="frame-unit-price"></span>€</small>
-                                                <small><span class="fw-semibold">Μέτρο : </span><span
+                                                <small><span class="fw-semibold">Τιμή / m: </span><span
+                                                        data-id="frame-unit-price"></span> €</small>
+                                                <small><span class="fw-semibold">Μέτρa: </span><span
                                                         data-id="frame-unit"></span>m</small>
                                             </div>
                                             <div class="invalid-feedback">
@@ -1038,9 +1036,9 @@
                                             <select class="form-select" data-id="second-frame-select">
                                             </select>
                                             <div class="d-flex flex-row gap-5">
-                                                <small><span class="fw-semibold">Τιμή μονάδας :</span><span
-                                                        data-id="second-frame-unit-price"></span>€</small>
-                                                <small><span class="fw-semibold">Μέτρο : </span><span
+                                                <small><span class="fw-semibold">Τιμή / m: </span><span
+                                                        data-id="second-frame-unit-price"></span> €</small>
+                                                <small><span class="fw-semibold">Μέτρa: </span><span
                                                         data-id="second-frame-unit"></span>m</small>
                                             </div>
                                             <div class="invalid-feedback">
@@ -1095,7 +1093,7 @@
                                         <div class="col-md-6 g-3">
                                             <label class="form-label" for="back-panel-select">ΤΖΑΜΙ-ΠΛΑΤΗ</label>
                                             <select class="form-select" data-id="back-panel-select"></select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="back-glass-squaremeter-label">0.00</span></small>
                                         </div>
                                         <div class="invalid-feedback">
@@ -1120,7 +1118,7 @@
                                             <label class="form-label" for="mirror-select">ΚΑΘΡΕΠΤΗΣ</label>
                                             <select class="form-select" data-id="mirror-select">
                                             </select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="mirror-squaremeter-label">0.00</span></small>
                                             <div class="invalid-feedback">
                                                 Please select
@@ -1196,7 +1194,7 @@
                                                 <option value="2">ΚΑΜΒΑΣ ΠΟΛΥΕΣΤΕΡΙΚΟΣ</option>
                                                 <option value="3">ΚΑΜΒΑΣ ΒΑΜΒΑΚΕΡΟΣ</option>
                                             </select>
-                                            <small class="mt-1 me-3 fw-semibold float-end">m<sup>2</sup>:
+                                            <small class="mt-1 me-3 fw-semibold">Τιμή / m2:
                                                 <span data-id="printing-squaremeter-label">0.00</span></small>
                                             <div class="invalid-feedback">
                                                 Please select
@@ -1240,11 +1238,10 @@
                                         <span>%</span>
                                     </div>
                                 </div>
-                                <hr>
                                 <!-- price after discount -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-8">ΤΙΜΗ ΜΕΤΑ ΕΚΠΤΩΣΗΣ:</div>
+                                    <div class="col-4 text-end">
                                         <span class="text-muted" data-id="after-discount-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -1258,26 +1255,24 @@
                                     </div>
                                 </div>
 
-                                <hr>
                                 <!-- total with vat -->
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-8">
                                         <h6>ΣΥΝΟΛΟ ΜΕ ΦΠΑ:</h6>
                                     </div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-4 text-end">
                                         <span class="text-muted" data-id="total-with-vat-label">0</span>
                                         <span>€</span>
                                     </div>
                                 </div>
 
-                                <hr>
-
                                 <!-- cost breakdown -->
-                                <h6>Ανάλυση κόστους</h6>
+                                <h6 class="mt-4">Ανάλυση κόστους</h6>
+                                <hr>
 
                                 <!-- frame price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΚΟΡΝΙΖΑΣ:</div>
+                                    <div class="col-6">ΚΟΡΝΙΖΑ:</div>
                                     <div class="col-6 text-end">
                                         <span class="text-muted" data-id="frame-price-label">0</span>
                                         <span>€</span>
@@ -1286,7 +1281,7 @@
 
                                 <!-- rebate price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΠΑΤΟΥΡΑΣ:</div>
+                                    <div class="col-6">ΠΑΤΟΥΡΑ:</div>
                                     <div class="col-6 text-end">
                                         <span class="text-muted" data-id="rebate-price-label">0</span>
                                         <span>€</span>
@@ -1295,8 +1290,8 @@
 
                                 <!-- back glass price -->
                                 <div class="row">
-                                    <div class="col-6">ΤΙΜΗ ΤΖΑΜΙ-ΠΛΑΤΗ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-7">ΤΖΑΜΙ-ΠΛΑΤΗ:</div>
+                                    <div class="col-5 text-end">
                                         <span class="text-muted" data-id="back-glass-price-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -1313,8 +1308,8 @@
 
                                 <!-- labor price -->
                                 <div class="row">
-                                    <div class="col-6">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-7">ΚΟΣΤΟΣ ΕΡΓΑΣΙΑΣ:</div>
+                                    <div class="col-5 text-end">
                                         <span class="text-muted" data-id="labor-price-label">0</span>
                                         <span>€</span>
                                     </div>
@@ -1573,7 +1568,18 @@
                 var activeTabId = document.querySelector('#myTab .nav-link.active').id;
                 activeTabId = activeTabId.replace('-tab', '');
                 if (activeTabId == "posters" || activeTabId == "frames" || activeTabId == "artworks") {
+
                     const tableId = "table-" + activeTabId;
+
+                    // Check if the device is likely a mobile device.
+                    const isMobile = window.innerWidth <= 768 && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
+                    // If it's a mobile device, exit the function.
+                    if (isMobile) {
+                        $('#' + tableId).bootstrapTable('resetView');
+                        return;
+                    }
+
                     const windowHeight = document.documentElement.clientHeight;
                     const offsetTop = document.getElementById(tableId).getBoundingClientRect().top;
                     const tableHeight = windowHeight - offsetTop + 15; // 15 added to decrease bottom offset.
