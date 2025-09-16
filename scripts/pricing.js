@@ -158,26 +158,19 @@ class tabManager {
     }
 
     setHandlers() {
-        this.elements.form.addEventListener('input', (event) => {
-            this.calculateAndSetValues();
-        });
-
-        this.elements.discountSelect.addEventListener('input', (event) => {
-            this.calculateAndSetValues();
-        });
-
         this.elements.frameSelect.addEventListener('input', (event) => {
             findRowInData(
                 this.datas["frame_prices"],
                 0, event.target.value).then((data) => {
                     this.states.selectedFrame = data;
-                    this.elements.frameUnitPriceLabel.textContent = formatNumber(this.getFrameUnitPrice());
-                });
 
-            findRowInData(
-                this.datas["outer_frames"],
-                0, event.target.value).then((data) => {
-                    this.states.selectedOuterFrame = data;
+                    findRowInData(
+                        this.datas["outer_frames"],
+                        0, event.target.value).then((data) => {
+                            this.states.selectedOuterFrame = data;
+                            this.calculateAndSetValues();
+                        });
+
                 });
         });
 
@@ -186,14 +179,25 @@ class tabManager {
                 this.datas["frame_prices"],
                 0, event.target.value).then((data) => {
                     this.states.selectedSecondFrame = data;
-                    this.elements.secondFrameUnitPriceLabel.textContent = formatNumber(this.getFrameUnitPrice(true)); // true means second frame
+                    findRowInData(
+                        this.datas["outer_frames"],
+                        0, event.target.value).then((data) => {
+                            this.states.selectedOuterSecondFrame = data;
+                            this.calculateAndSetValues();
+                        });
                 });
+        });
 
-            findRowInData(
-                this.datas["outer_frames"],
-                0, event.target.value).then((data) => {
-                    this.states.selectedOuterSecondFrame = data;
-                });
+        this.elements.heightInput.addEventListener('input', (event) => {
+            this.calculateAndSetValues();
+        });
+
+        this.elements.widthInput.addEventListener('input', (event) => {
+            this.calculateAndSetValues();
+        });
+
+        this.elements.outerMeasureSelect.addEventListener('input', (event) => {
+            this.calculateAndSetValues();
         });
 
         if (this.priceSource != "stampless") {
@@ -202,6 +206,7 @@ class tabManager {
                     this.datas["back_panel_glasses_" + this.priceSource],
                     0, event.target.value).then((data) => {
                         this.states.selectedBackPanelGlass = data;
+                        this.calculateAndSetValues();
                     });
             });
 
@@ -210,6 +215,7 @@ class tabManager {
                     this.datas["extra_back_frames"],
                     0, event.target.value).then((data) => {
                         this.states.selectedExtraBackPanel = data;
+                        this.calculateAndSetValues();
                     });
             });
 
@@ -218,6 +224,7 @@ class tabManager {
                     this.datas["mirrors"],
                     0, event.target.value).then((data) => {
                         this.states.selectedMirror = data;
+                        this.calculateAndSetValues();
                     });
             });
 
@@ -226,6 +233,7 @@ class tabManager {
                     this.datas["passpartouts"],
                     0, event.target.value).then((data) => {
                         this.states.selectedPasspartout = data;
+                        this.calculateAndSetValues();
                     });
             });
 
@@ -234,6 +242,7 @@ class tabManager {
                     this.datas["extra_services"],
                     0, event.target.value).then((data) => {
                         this.states.selectedExtraService = data;
+                        this.calculateAndSetValues();
                     });
             });
 
@@ -242,6 +251,7 @@ class tabManager {
                     this.datas["back_board_types"],
                     0, event.target.value).then((data) => {
                         this.states.selectedBackBoardType = data;
+                        this.calculateAndSetValues();
                     });
             });
 
@@ -250,6 +260,7 @@ class tabManager {
                     this.datas["artwork_prices"],
                     0, event.target.value).then((data) => {
                         this.states.selectedArtwork = data;
+                        this.calculateAndSetValues();
                     });
             });
 
@@ -258,9 +269,18 @@ class tabManager {
                     this.datas["stretchings"],
                     0, event.target.value).then((data) => {
                         this.states.selectedStretching = data;
+                        this.calculateAndSetValues();
                     });
             });
+
+            this.elements.printingSelect.addEventListener('input', (event) => {
+                this.calculateAndSetValues();
+            });
         }
+
+        this.elements.discountSelect.addEventListener('input', (event) => {
+            this.calculateAndSetValues();
+        });
 
         this.elements.clearButton.addEventListener('click', (event) => {
             this.elements.form.reset();
@@ -294,7 +314,6 @@ class tabManager {
         const frameUnit = this.calculateFrameUnit();
         const secondFrameUnit = this.calculateSecondFrameUnit();
 
-
         // cost breakdown
         this.elements.summaryFramePriceLabelabel.textContent = formatNumber(this.calculateFramePrice());
         this.elements.summaryRebatePriceLabel.textContent = formatNumber(this.calculateSecondFramePrice());
@@ -321,7 +340,9 @@ class tabManager {
         this.elements.vatLabel.textContent = formatNumber(priceWithVat - priceWithoutVat); // vat amount
 
         // set values
+        this.elements.frameUnitPriceLabel.textContent = formatNumber(this.getFrameUnitPrice());
         this.elements.frameUnitLabel.textContent = formatNumber(frameUnit);
+        this.elements.secondFrameUnitPriceLabel.textContent = formatNumber(this.getFrameUnitPrice(true)); // true means second frame
         this.elements.secondFrameUnitLabel.textContent = formatNumber(secondFrameUnit);
 
         if (this.priceSource != "stampless") {
@@ -548,7 +569,7 @@ class tabManager {
     calculateSquareMeter1() {
         const height = getTypedInputValue(this.elements.heightInput);
         const width = getTypedInputValue(this.elements.widthInput);
-        const wear = calculateOuterMeasure() / 4 * 100;
+        const wear = this.calculateOuterMeasure() / 4 * 100;
         return (((height - wear) + (width - wear)) * 2) / 100;
     }
 
